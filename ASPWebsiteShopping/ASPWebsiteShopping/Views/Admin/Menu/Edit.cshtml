@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "/Views/Layouts/_Admin.cshtml";
+    ViewData["Title"] = "Chỉnh sửa menu";
+}
+@model MenuViewModel
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <form method="post" formaction="Edit">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="hidden" asp-for="Menu.Id" value="@Model.Menu.Id"/>
+                        <div class="form-group">
+                            <label asp-for="Menu.Name">Tên Menu</label>
+                            <input type="text" asp-for="Menu.Name" class="form-control" placeholder="Enter Menu Name" value="@Model.Menu.Name">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Menu.ParentId">Menu cha</label>
+                             <select class="js-example-basic-single form-control" asp-for="Menu.ParentId">
+            <option value="0">--None--</option>
+                                @ViewData["htmlOption"]
+        </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <!-- /.col-md-6 -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+    </form>
+    <!-- /.content -->
+</div>

@@ -1,0 +1,33 @@
+﻿@{
+    Layout = "/Views/Layouts/_Admin.cshtml";
+    ViewData["Title"] = "Chỉnh sửa liên kết";
+}
+@model SettingViewModel
+<div class="content-wrapper">
+    <form method="post" formaction="Edit" enctype="multipart/form-data">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="hidden" asp-for="Setting.Id" />
+                        <div class="form-group">
+                            <label asp-for="Setting.ConfigKey"> ConfigKey</label>
+                            <input type="text" asp-for="Setting.ConfigKey" class="form-control" placeholder="ConfigKey">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Setting.ConfigValue"> ConfigValue</label>
+                            <input type="text" asp-for="Setting.ConfigValue" class="form-control" placeholder="ConfigValue">
+                        </div>
+                        
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+
+                    </div>
+                    <!-- /.col-md-6 -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+    </form>
+    <!-- /.content -->
+</div>

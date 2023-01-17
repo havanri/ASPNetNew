@@ -1,0 +1,94 @@
+﻿@{
+	Layout = "/Views/Layouts/_Admin.cshtml";
+	ViewData["Title"] = "Chỉnh sửa sản phẩm";
+}
+
+
+@section Css {
+										<link href="https://cdn.jsdelivr.net/npm/froala-editor@4.0.10/css/froala_editor.pkgd.min.css" rel="stylesheet" />
+}
+	@section Script {
+									<script src="https://cdn.jsdelivr.net/npm/froala-editor@4.0.10/js/froala_editor.pkgd.min.js"></script>
+						<script>
+								var editor = new FroalaEditor('#example-froala');
+						</script>
+	@*				<script src="~/Index.js"></script>*@
+	}
+	@model Product
+<div class="content-wrapper">
+				<!-- Content Header (Page header) -->
+				<!-- /.content-header -->
+				<!-- Main content -->
+					<form formaction="Edit"  id="FormCreateProduct" enctype="multipart/form-data" method="POST" >
+					<div class="content">
+						<div class="container-fluid">
+							<div class="row">
+								<div class="col-md-6">
+									<input type="hidden" asp-for="Id"/>
+									<div class="form-group">
+										<label asp-for="Name">Tên sản phẩm</label>
+												<input type="text" asp-for="Name" class="form-control"  placeholder="Enter Product Name">
+									</div>
+									<div class="form-group">
+										<label asp-for="Price">Giá tiền</label>
+												<input type="number" asp-for="Price" class="form-control"  placeholder="Enter Product Price">
+									</div>
+										<div class="form-group">
+											<label asp-for="FeatureImage">Ảnh đại diện sản phẩm</label>
+											<input type="file" asp-for="FeatureImage" class="form-control-file" >
+											<div class="col-md-4 container_feature_image">
+                                <div class="row">
+                                  <img class="feature_image" src="@Model.FeatureImage" alt="">
+                                </div>
+                            </div>
+										</div>
+										<div class="form-group">
+												<label asp-for="ProductImagesRequest">Album ảnh sản phẩm</label>
+													<input type="file" asp-for="ProductImagesRequest" class="form-control-file" id="InputImages" multiple>
+												<div class="col-md-12 container_image_detail">
+													<div class="row">
+									@foreach (var itemImage in @Model.ProductImages)
+									{
+															<div class="col-md-3">
+																	<img class="image_detail" src="~/@itemImage.ImagePath" />
+															</div>
+									}
+												</div>
+											</div>
+									</div>
+										<div class="form-group">
+										<label asp-for="CategoryId">Danh mục cha</label>
+											 <select class="js-example-basic-single form-control" asp-for="CategoryId">
+						<option value="0">--None--</option>
+								@ViewData["htmlOption"]
+					</select>
+									</div>
+										<div class="form-group">
+												<label >Từ khóa sản phẩm:</label>
+												<select id="Tags" name="tags[]" class="form-control" multiple="multiple">
+								@foreach (var itemTag in @Model.Tags)
+								{
+																<option value="@itemTag.Name" selected>@itemTag.Name</option>
+								}
+										</select>
+									</div>
+							</div>
+							<!-- /.col-md-6 -->
+							<div class="col-md-12">
+								 <div class="form-group">
+									 <label asp-for="Description">Mô tả sản phẩm</label>
+									 <textarea asp-for="Description" id="example-froala" rows="15"></textarea>
+								 </div>
+							</div>
+
+							<div class="col-md-6 float-left">
+									<button type="submit" class="btn btn-primary">Đăng</button>
+							</div>
+
+						</div>
+						<!-- /.row -->
+					</div><!-- /.container-fluid -->
+				</div>
+			</form>
+			<!-- /.content -->
+		</div>

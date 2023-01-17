@@ -1,0 +1,36 @@
+﻿@{
+    Layout = "/Views/Layouts/_Admin.cshtml";
+    ViewData["Title"] = "Thêm mới slider";
+}
+@model SliderViewModel
+<div class="content-wrapper">
+    
+    <form method="post" for-action="Insert" enctype="multipart/form-data">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Slider.Name"> Tên Slider</label>
+                            <input type="text" asp-for="Slider.Name" class="form-control" placeholder="Tên Slider">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Slider.Description"> Mô Tả</label>
+                            <input type="text" asp-for="Slider.Description" class="form-control" placeholder="Mô Tả">
+                        </div>
+                        <div class="form-group">
+                            <label asp-for="Slider.Image">Ảnh Slider</label>
+                            <input type="File" asp-for="Slider.Image" class="form-control" placeholder="Ảnh Slider">
+                        </div>
+
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                        
+                    </div>
+                    <!-- /.col-md-6 -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+    </form>
+    <!-- /.content -->
+</div>
