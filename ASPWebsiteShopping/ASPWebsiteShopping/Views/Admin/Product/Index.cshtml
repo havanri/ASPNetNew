@@ -47,18 +47,18 @@
 											@obj.Name
 									</td>
 										<td>
-											@obj.Price
+											@String.Format("{0:n0}",@obj.Price)đ
 										</td>
 											<td>
 											<image class="img-admin-table-product" src="@obj.FeatureImagePath"/>
 										</td>
-										<td>@if(@obj.Category.DeletedAt==null){
+										<td>@if(@obj.Category.DeletedAt!=null){
 												<p>-</p>
 											}else {
 																<p>@obj.Category.Name</p>
 											}</td>
 										<td>
-											@if (obj.Tags != null)
+											@if (obj.Tags.Count > 0)
 											{
 												var last_item = obj.Tags.Last();
 												foreach (var itemTag in obj.Tags)

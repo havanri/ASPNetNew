@@ -20,6 +20,9 @@ namespace ASPWebsiteShopping.Data
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<Tag> Tags { get; set; }
         public DbSet<ProductTag> ProductTag { get; set; }
+        public DbSet<ProductSpecies> ProductSpecies { get; set; }
+        public DbSet<Species> ListSpecies { get; set; }
+        public DbSet<ProductAttribute> ProductAttributes { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -28,11 +31,19 @@ namespace ASPWebsiteShopping.Data
             .HasOne(p => p.Category)
             .WithMany(b => b.Products)
             .HasForeignKey(p => p.CategoryId);
+
             //set Product - Album Image one-to-many
             modelBuilder.Entity<ProductImage>()
             .HasOne(p => p.Product)
             .WithMany(b => b.ProductImages)
             .HasForeignKey(p => p.ProductId);
+
+            //set Attribute - Species one-to-many
+            modelBuilder.Entity<Species>()
+            .HasOne(p => p.ProductAttribute)
+            .WithMany(b => b.ListSpecies)
+            .HasForeignKey(p => p.AttributeId);
+
             //set Product-Tag Many to Many
             modelBuilder.Entity<Product>()
             .HasMany(p => p.Tags)
@@ -52,6 +63,27 @@ namespace ASPWebsiteShopping.Data
                     j.HasKey(t => new { t.ProductId, t.TagId });
                 });
             base.OnModelCreating(modelBuilder);
+
+            //set Product-Species Many to Many
+            modelBuilder.Entity<Product>()
+            .HasMany(p => p.ListSpecies)
+            .WithMany(p => p.ListProduct)
+            .UsingEntity<ProductSpecies>(
+                j => j
+                    .HasOne(pt => pt.Species)
+                    .WithMany(t => t.ListProductSpecies)
+                    .HasForeignKey(pt => pt.SpeciesId),
+                j => j
+                    .HasOne(pt => pt.Product)
+                    .WithMany(p => p.ListProductSpecies)
+                    .HasForeignKey(pt => pt.ProductId),
+                j =>
+                {
+                    j.Property(pt => pt.PublicationDate).HasDefaultValueSql("CURRENT_TIMESTAMP");
+                    j.HasKey(t => new { t.ProductId, t.SpeciesId });
+                });
+            base.OnModelCreating(modelBuilder);
+
         }
     }
 }

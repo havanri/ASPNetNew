@@ -40,7 +40,6 @@
 
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
-    <Folder Include="Views\Admin\Tag\" />
     <Folder Include="Views\UI\Cart\" />
     <Folder Include="Views\UI\Checkout\" />
     <Folder Include="Views\UI\Shop\" />

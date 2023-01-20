@@ -1,0 +1,39 @@
+﻿@{
+    Layout = "/Views/Layouts/_Admin.cshtml";
+    ViewData["Title"] = "Chỉnh sửa chủng loại";
+}
+@model SpeciesViewModel
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h2>Chỉnh sửa chủng loại của thuộc tính @Model.Species.ProductAttribute.Name</h2>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+    <form method="post" formaction="Edit">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="hidden" asp-for="Species.Id"/>
+                        <input type="hidden" asp-for="Species.AttributeId"/>
+                        <div class="form-group">
+                            <label asp-for="Species.Name">Tên chủng loại</label>
+                            <input type="text" asp-for="Species.Name" class="form-control" placeholder="Enter Species Name">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <!-- /.col-md-6 -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+    </form>
+    <!-- /.content -->
+</div>

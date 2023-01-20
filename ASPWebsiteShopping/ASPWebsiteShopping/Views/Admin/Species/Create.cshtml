@@ -1,0 +1,40 @@
+﻿@{
+    Layout = "/Views/Layouts/_Admin.cshtml";
+    ViewData["Title"] = "Thêm mới chủng loại";
+}
+@model SpeciesViewModel
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- /.content-header -->
+    <!-- Main content -->
+     <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h2>@ViewData["Page"]</h2>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <form method="post" formaction="Create">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <input type="hidden" value="@ViewData["AttributeId"]" name="attributeId"/>
+                        <div class="form-group">
+                            <label asp-for="Species.Name">Tên chủng loại</label>
+                            <input type="text" asp-for="Species.Name" class="form-control" placeholder="Enter Species Name">
+                            <span asp-validation-for="Species.Name" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <!-- /.col-md-6 -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+    </form>
+    <!-- /.content -->
+</div>

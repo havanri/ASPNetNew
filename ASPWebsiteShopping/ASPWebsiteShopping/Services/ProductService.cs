@@ -13,7 +13,7 @@ namespace ASPWebsiteShopping.Services
         }
         public IEnumerable<Product> GetAllProducts()
         {
-            return _db.Products.Include(i=>i.ProductImages).Include(c=>c.Category).Include(t=>t.Tags).ToList();
+            return _db.Products.Include(i=>i.ProductImages).Include(c=>c.Category).Include(t=>t.Tags).Include(s=>s.ListProductSpecies).Include(r=>r.ListSpecies).ToList();
         }
         public Product GetProductById(int? id)
         {
@@ -21,7 +21,7 @@ namespace ASPWebsiteShopping.Services
             {
                 return null;
             }
-            var product = _db.Products.Include(t=>t.Tags).Include(i=>i.ProductImages).FirstOrDefault(x => x.Id == id);
+            var product = _db.Products.Include(t=>t.Tags).Include(s => s.ListProductSpecies).Include(r => r.ListSpecies).ThenInclude(ra=>ra.ProductAttribute).Include(i=>i.ProductImages).FirstOrDefault(x => x.Id == id);
             return product;
         }
         public void DeleteById(Product product)

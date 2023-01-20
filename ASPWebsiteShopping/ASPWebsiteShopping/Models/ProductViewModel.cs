@@ -14,5 +14,7 @@ namespace ASPWebsiteShopping.Models
         public IEnumerable<ProductImage> ProductImages { get; set; }
 
         public IEnumerable<Tag> Tags { get; set; }
+
+        public IEnumerable<ProductAttribute> Attributes { get; set; }
     }
 }

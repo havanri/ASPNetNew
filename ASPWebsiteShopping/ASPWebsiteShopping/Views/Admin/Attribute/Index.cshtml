@@ -1,0 +1,99 @@
+﻿@{
+	Layout = "/Views/Layouts/_ManagerTable.cshtml";
+	ViewData["Title"] = "Attribute Page";
+	ViewData["Page"] = "Thuộc tính sản phẩm";
+}
+@model AttributeViewModel
+<section class="content">
+	  <div class="container-fluid">
+		<div class="row">
+		  <div class="col-12">
+			<!--Card-->
+			<div class="card">
+				<div class="card-header">
+					 <a asp-controller="Attribute" asp-action="Create" class="btn btn-primary btn-sm float-right" >
+								  <i class="bi bi-plus-circle"></i>
+								  Create New Attribute
+							  </a>
+				</div>
+					@*             <div class="card-header">
+                <h3 class="card-title">DataTable with default features</h3>
+              </div>*@
+			  <!-- /.card-header -->
+			  <div class="card-body">
+				<table id="example1" class="table table-bordered table-striped">
+				  <thead>
+				  <tr>
+					<th>#</th>
+					<th>Attribute Name</th>
+					<th>Các chủng loại</th>
+					<th style="width: 20%">
+					  </th>
+				  </tr>
+				  </thead>
+				  <tbody>
+								@foreach (var obj in @Model.ProductAttributes)
+								{
+						<tr>
+							<td>
+												#@obj.Id
+							</td>
+							<td>
+											@obj.Name
+							</td>
+							<td>
+								@if (obj.ListSpecies.Count > 0)
+											{
+												var last_item = obj.ListSpecies.Last();
+												foreach (var item in obj.ListSpecies)
+												{
+													if (item.Id.Equals(last_item.Id)) // here I want to check if it is the last item in my ViewBag.List
+																				{
+														<span>@item.Name</span><br />
+													}
+													else{
+														<span>@item.Name, </span>
+													}
+												}
+											}
+									<a asp-controller="Species" asp-action="Index" asp-route-id="@obj.Id" >
+										  Cấu hình chủng loại của thuộc tính sản phẩm
+									  </a>
+							</td>
+								<td class="project-actions text-right">
+								<div class="w-75 btn-group" role="group">
+													 <a asp-controller="Attribute" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-info btn-sm" >
+									  <i class="fas fa-pencil-alt">
+									  </i>
+									  Edit
+								  </a>
+										  <a asp-controller="Attribute" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger btn-sm action_delete">
+									  <i class="fas fa-trash">
+									  </i>
+									  Delete
+								  </a>
+								</div>
+							</td>
+						</tr>
+								}
+				  </tbody>
+				  <tfoot>
+				  <tr>
+					<th>#</th>
+					<th>Attribute Name</th>
+					<th>Các chủng loại</th>
+					<th></th>
+				  </tr>
+				  </tfoot>
+				</table>
+			  </div>
+			  <!-- /.card-body -->
+			</div>
+			<!-- /.card -->
+		  </div>
+		  <!-- /.col -->
+		</div>
+		<!-- /.row -->
+	  </div>
+	  <!-- /.container-fluid -->
+	</section>

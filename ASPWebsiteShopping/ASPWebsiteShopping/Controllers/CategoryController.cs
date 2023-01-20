@@ -41,10 +41,11 @@ namespace ASPWebsiteShopping.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(CategoryViewModel categoryViewModel)
+        public IActionResult Create( CategoryViewModel categoryViewModel)
         {
-            if (ModelState.IsValid)
-            {
+/*            categoryViewModel.Categories = null;
+            categoryViewModel.Category.Products = null;
+            categoryViewModel.Category.Slug = StringExtendsions.Slugify(categoryViewModel.Category.Name);*/
                 Category category = new Category()
                 {
                     Name = categoryViewModel.Category.Name,
@@ -54,8 +55,7 @@ namespace ASPWebsiteShopping.Controllers
                 };
                 _categoryService.AddCategory(category);
                 return RedirectToAction("Index");
-            }
-            return View("Views/Admin/Category/Create.cshtml", categoryViewModel);
+            /*return View("Views/Admin/Category/Create.cshtml", categoryViewModel);*/
         }
         public IActionResult Edit(int? id)
         {
@@ -81,10 +81,9 @@ namespace ASPWebsiteShopping.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(CategoryViewModel categoryViewModel)
+        public IActionResult Edit(CategoryViewModel categoryViewModel)//integer : so nguyen //string:chuoi //obj
         {
-            if (ModelState.IsValid)
-            {
+                
                 try
                 {
                     Category category = _categoryService.GetCategoryById(categoryViewModel.Category.Id);
@@ -102,8 +101,7 @@ namespace ASPWebsiteShopping.Controllers
                 {
                     return NotFound();
                 }
-            }
-            return View("Views/Admin/Category/Edit.cshtml", categoryViewModel);
+/*            return View("Views/Admin/Category/Edit.cshtml", categoryViewModel);*/
         }
 
 

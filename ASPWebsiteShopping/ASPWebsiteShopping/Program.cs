@@ -29,6 +29,9 @@ builder.Services.AddScoped<ITagService, TagService>();
 builder.Services.AddScoped<IProductTagService, ProductTagService>();
 builder.Services.AddScoped<ISliderService, SliderService>();
 builder.Services.AddScoped<ISettingService, SettingService>();
+builder.Services.AddScoped<IAttributeService, AttributeService>();
+builder.Services.AddScoped<ISpeciesService, SpeciesService>();
+builder.Services.AddScoped<IProductSpeciesService, ProductSpeciesService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -51,9 +54,12 @@ app.UseRouting();
 app.UseAuthentication();
 app.UseAuthorization();
 
+//route
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Dashboard}/{action=Index}/{id?}");
+
+//
 app.MapRazorPages();
 
 app.Run();

@@ -125,6 +125,21 @@ namespace ASPWebsiteShopping.Migrations
                     b.ToTable("Products");
                 });
 
+            modelBuilder.Entity("ASPWebsiteShopping.Models.ProductAttribute", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductAttributes");
+                });
+
             modelBuilder.Entity("ASPWebsiteShopping.Models.ProductImage", b =>
                 {
                     b.Property<int>("Id")
@@ -143,6 +158,26 @@ namespace ASPWebsiteShopping.Migrations
                     b.HasIndex("ProductId");
 
                     b.ToTable("ProductImages");
+                });
+
+            modelBuilder.Entity("ASPWebsiteShopping.Models.ProductSpecies", b =>
+                {
+                    b.Property<int>("ProductId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SpeciesId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("PublicationDate")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("datetime(6)")
+                        .HasDefaultValueSql("CURRENT_TIMESTAMP");
+
+                    b.HasKey("ProductId", "SpeciesId");
+
+                    b.HasIndex("SpeciesId");
+
+                    b.ToTable("ProductSpecies");
                 });
 
             modelBuilder.Entity("ASPWebsiteShopping.Models.ProductTag", b =>
@@ -223,6 +258,26 @@ namespace ASPWebsiteShopping.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sliders");
+                });
+
+            modelBuilder.Entity("ASPWebsiteShopping.Models.Species", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    b.Property<int>("AttributeId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AttributeId");
+
+                    b.ToTable("Species");
                 });
 
             modelBuilder.Entity("ASPWebsiteShopping.Models.Tag", b =>
@@ -458,6 +513,25 @@ namespace ASPWebsiteShopping.Migrations
                     b.Navigation("Product");
                 });
 
+            modelBuilder.Entity("ASPWebsiteShopping.Models.ProductSpecies", b =>
+                {
+                    b.HasOne("ASPWebsiteShopping.Models.Product", "Product")
+                        .WithMany("ListProductSpecies")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ASPWebsiteShopping.Models.Species", "Species")
+                        .WithMany("ListProductSpecies")
+                        .HasForeignKey("SpeciesId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Product");
+
+                    b.Navigation("Species");
+                });
+
             modelBuilder.Entity("ASPWebsiteShopping.Models.ProductTag", b =>
                 {
                     b.HasOne("ASPWebsiteShopping.Models.Product", "Product")
@@ -475,6 +549,17 @@ namespace ASPWebsiteShopping.Migrations
                     b.Navigation("Product");
 
                     b.Navigation("Tag");
+                });
+
+            modelBuilder.Entity("ASPWebsiteShopping.Models.Species", b =>
+                {
+                    b.HasOne("ASPWebsiteShopping.Models.ProductAttribute", "ProductAttribute")
+                        .WithMany("ListSpecies")
+                        .HasForeignKey("AttributeId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("ProductAttribute");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -535,9 +620,21 @@ namespace ASPWebsiteShopping.Migrations
 
             modelBuilder.Entity("ASPWebsiteShopping.Models.Product", b =>
                 {
+                    b.Navigation("ListProductSpecies");
+
                     b.Navigation("ProductImages");
 
                     b.Navigation("ProductTags");
+                });
+
+            modelBuilder.Entity("ASPWebsiteShopping.Models.ProductAttribute", b =>
+                {
+                    b.Navigation("ListSpecies");
+                });
+
+            modelBuilder.Entity("ASPWebsiteShopping.Models.Species", b =>
+                {
+                    b.Navigation("ListProductSpecies");
                 });
 
             modelBuilder.Entity("ASPWebsiteShopping.Models.Tag", b =>

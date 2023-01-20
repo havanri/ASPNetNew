@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "/Views/Layouts/_Admin.cshtml";
+    ViewData["Title"] = "Thêm mới từ khóa";
+}
+@model TagViewModel
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <form method="post" formaction="Create">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="Tag.Name">Tên danh mục</label>
+                            <input type="text" asp-for="Tag.Name" class="form-control" placeholder="Enter Tag Name">
+                            <span asp-validation-for="Tag.Name" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <!-- /.col-md-6 -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+    </form>
+    <!-- /.content -->
+</div>

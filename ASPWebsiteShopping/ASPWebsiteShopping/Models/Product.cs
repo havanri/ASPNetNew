@@ -9,6 +9,7 @@ namespace ASPWebsiteShopping.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
+        [DisplayFormat(DataFormatString = "{0:n0}")]
         public decimal Price { get; set; }
         public string FeatureImagePath { get; set; }
         [NotMapped]
@@ -25,6 +26,9 @@ namespace ASPWebsiteShopping.Models
         public virtual List<ProductImage> ProductImages { get; set; }
         public ICollection<Tag> Tags { get; set; }
         public List<ProductTag> ProductTags { get; set; }
+
+        public ICollection<Species> ListSpecies { get; set; }
+        public List<ProductSpecies> ListProductSpecies { get; set; }
 
         public DateTime CreatedAt { get; set; }
         public DateTime? UpdatedAt { get; set; }

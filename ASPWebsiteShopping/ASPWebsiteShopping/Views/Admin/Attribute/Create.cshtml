@@ -1,0 +1,29 @@
+﻿@{
+    Layout = "/Views/Layouts/_Admin.cshtml";
+    ViewData["Title"] = "Thêm mới thuộc tính";
+}
+@model AttributeViewModel
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <!-- /.content-header -->
+    <!-- Main content -->
+    <form method="post" formaction="Create">
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label asp-for="ProductAttribute.Name">Tên thuộc tính</label>
+                            <input type="text" asp-for="ProductAttribute.Name" class="form-control" placeholder="Enter Attribute Name">
+                            <span asp-validation-for="ProductAttribute.Name" class="text-danger"></span>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <!-- /.col-md-6 -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+    </form>
+    <!-- /.content -->
+</div>
