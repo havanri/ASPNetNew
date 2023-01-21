@@ -6,7 +6,7 @@ namespace ASPWebsiteShopping.Controllers
     {
         public IActionResult Admin()
         {
-            return View("Views/UI/Home/Index.cshtml");
+            return View("Views/UI/Contact/Index.cshtml");
         }
     }
 }
