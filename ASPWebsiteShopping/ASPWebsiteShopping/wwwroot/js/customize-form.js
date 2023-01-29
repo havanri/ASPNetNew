@@ -16,6 +16,11 @@
         tags: true,
         tokenSeparators: [',']
     });
+    //role
+    $("#Roles").select2({
+        tags: true,
+        tokenSeparators: [',']
+    });
     //datatable
     $("#example1").DataTable({
         "responsive": true, "lengthChange": false, "autoWidth": false,

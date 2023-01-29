@@ -1,7 +1,9 @@
 using ASPWebsiteShopping.Data;
+using ASPWebsiteShopping.Models;
 using ASPWebsiteShopping.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,8 +17,11 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
 
 
-builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
-    .AddEntityFrameworkStores<ApplicationDbContext>();
+builder.Services.AddDefaultIdentity<IdentityUser>(options => {
+    options.SignIn.RequireConfirmedAccount = true;
+
+} ).AddRoles<IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+
 builder.Services.AddControllersWithViews();
 //Depency Injection
 //builder.Services.AddScoped<ICategoryService, CategoryService>();//share doi tuong refresh=>chuyen trang thai doi tuong A->B
@@ -32,6 +37,21 @@ builder.Services.AddScoped<ISettingService, SettingService>();
 builder.Services.AddScoped<IAttributeService, AttributeService>();
 builder.Services.AddScoped<ISpeciesService, SpeciesService>();
 builder.Services.AddScoped<IProductSpeciesService, ProductSpeciesService>();
+builder.Services.AddAuthorization(options =>
+{
+    //Role
+    options.AddPolicy("ProductRole", policy => policy.RequireRole("Admin","Content","Manager"));
+    //ClaimUser
+    options.AddPolicy("CreateProduct", policy => policy.RequireClaim("Create Product"));
+    options.AddPolicy("ListProduct", policy => policy.RequireClaim("List Product"));
+    options.AddPolicy("EditProduct", policy => policy.RequireClaim("Edit Product"));
+    options.AddPolicy("eleteProduct", policy => policy.RequireClaim("Delete Product"));
+});
+/*builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();*/
+
+/*builder.Services.AddIdentity<ModelIdentityUser,IdentityRole>();*/
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -57,7 +77,7 @@ app.UseAuthorization();
 //route
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Dashboard}/{action=Index}/{id?}");
+    pattern: "{controller=UI}/{action=Index}/{id?}");
 
 //
 app.MapRazorPages();

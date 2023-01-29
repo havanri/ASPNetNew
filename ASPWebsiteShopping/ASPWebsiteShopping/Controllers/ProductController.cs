@@ -2,6 +2,7 @@
 using ASPWebsiteShopping.Extendsions;
 using ASPWebsiteShopping.Models;
 using ASPWebsiteShopping.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Hosting;
@@ -15,6 +16,7 @@ using System.Web.WebPages;
 
 namespace ASPWebsiteShopping.Controllers
 {
+    [Authorize(Policy = "ProductRole")]
     public class ProductController : Controller
     {
         private readonly IProductService _productService;
@@ -47,7 +49,9 @@ namespace ASPWebsiteShopping.Controllers
             mymodel.Products = _productService.GetAllProducts();
             return View("Views/Admin/Product/Index.cshtml", mymodel);
         }
+       
         [HttpGet]
+        [Authorize(Policy = "CreateProduct")]
         public IActionResult Create()
         {
             ProductViewModel model = new ProductViewModel();

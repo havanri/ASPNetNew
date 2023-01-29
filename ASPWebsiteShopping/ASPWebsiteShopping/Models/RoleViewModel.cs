@@ -1,6 +1,6 @@
 ﻿namespace ASPWebsiteShopping.Models
 {
-    public class User
+    public class RoleViewModel
     {
 
     }

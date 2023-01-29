@@ -1,0 +1,53 @@
+﻿@{
+    Layout = "/Views/Layouts/_Admin.cshtml";
+    ViewData["Title"] = "Chỉnh sửa thành viên";
+}
+@section Script {
+
+	}
+    @model EditUserViewModel
+<div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <!-- /.content-header -->
+        <!-- Main content -->
+        <form method="post" formaction="Edit">
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="hidden" asp-for="@Model.User.Id"/>
+                            <div class="form-group">
+                                    <label asp-for="@Model.User.UserName">UserName</label>
+                                    <input type="text" asp-for="@Model.User.UserName" class="form-control" placeholder="Enter UserName">
+                                    <span asp-validation-for="@Model.User.UserName" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                            <label asp-for="@Model.User.Email">Email</label>
+                                    <input type="text" asp-for="@Model.User.Email" class="form-control" placeholder="Enter Email">
+                                    <span asp-validation-for="@Model.User.Email" class="text-danger"></span>
+                            </div>
+                           <div class="form-group">
+                                    <label asp-for="@Model.User.Password">Password</label>
+                                    <input type="text" asp-for="@Model.User.Password" class="form-control" placeholder="Enter Password">
+                                    <span asp-validation-for="@Model.User.Password" class="text-danger"></span>
+                            </div>
+                                <div class="form-group attribute-species">
+                                                            <label >Vai trò</label>
+                                                                <select asp-for="@Model.User.Roles" class="js-example-basic-single js-attribute-select form-control" >
+                                
+                                    @ViewData["htmlOptionRoles"]
+                                                </select>
+                                                </div>
+                                                    <div>
+                                          <a asp-action="ManagerUserClaims" asp-route-id="@Model.User.Id" class="btn btn-danger text-white">Claims</a>
+                                    </div><br />
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                    <!-- /.col-md-6 -->
+                </div>
+                <!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+    </form>
+    <!-- /.content -->
+</div>
