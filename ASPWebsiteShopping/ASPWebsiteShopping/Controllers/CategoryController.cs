@@ -2,8 +2,10 @@
 using ASPWebsiteShopping.Extendsions;
 using ASPWebsiteShopping.Models;
 using ASPWebsiteShopping.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
+
 
 namespace ASPWebsiteShopping.Controllers
 {
@@ -11,6 +13,7 @@ namespace ASPWebsiteShopping.Controllers
     {
         private readonly ICategoryService _categoryService;
         private readonly IWebHostEnvironment _whostEnvironment;
+        
 
         public CategoryController(ICategoryService categoryService,IWebHostEnvironment whostEnvironment)
         {
@@ -22,8 +25,11 @@ namespace ASPWebsiteShopping.Controllers
         {
             var model = new CategoryViewModel();
             model.Categories = _categoryService.GetAllCategories();
+            
+
             return View("Views/Admin/Category/Index.cshtml",model);
         }
+        [Authorize(Policy = "CreateCategory")]
         public IActionResult Create()
         {
             //
@@ -57,6 +63,7 @@ namespace ASPWebsiteShopping.Controllers
                 return RedirectToAction("Index");
             /*return View("Views/Admin/Category/Create.cshtml", categoryViewModel);*/
         }
+        [Authorize(Policy = "EditCategory")]
         public IActionResult Edit(int? id)
         {
             if (id == null || id == 0)
@@ -106,6 +113,7 @@ namespace ASPWebsiteShopping.Controllers
 
 
         [HttpGet]
+        [Authorize(Policy = "DeleteCategory")]
         public void Delete(int? id)
         {
             if (id == null || id == 0)

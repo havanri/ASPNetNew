@@ -45,7 +45,13 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("CreateProduct", policy => policy.RequireClaim("Create Product"));
     options.AddPolicy("ListProduct", policy => policy.RequireClaim("List Product"));
     options.AddPolicy("EditProduct", policy => policy.RequireClaim("Edit Product"));
-    options.AddPolicy("eleteProduct", policy => policy.RequireClaim("Delete Product"));
+    options.AddPolicy("DeleteProduct", policy => policy.RequireClaim("Delete Product"));
+
+    options.AddPolicy("DeleteCategory", policy => policy.RequireClaim("Delete Category"));
+    options.AddPolicy("CreateCategory", policy => policy.RequireClaim("Create Category"));
+    options.AddPolicy("EditCategory", policy => policy.RequireClaim("Edit Category"));
+    options.AddPolicy("ListCategory", policy => policy.RequireClaim("List Category"));
+
 });
 /*builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();*/
 

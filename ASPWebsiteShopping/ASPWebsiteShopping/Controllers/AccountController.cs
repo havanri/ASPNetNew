@@ -37,7 +37,7 @@ namespace ASPWebsiteShopping.Controllers
 			if (ModelState.IsValid)
 			{
 				/*var usersignedUser = _userManager.FindByEmailAsync(model.Email);*/
-                var result = await _signInManager.PasswordSignInAsync("riprodao@gmail.com", model.Password, model.RememberMe, false);
+                var result = await _signInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, false);
                 if (result.Succeeded)
                 {
                     return RedirectToAction("Index");

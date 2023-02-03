@@ -10,6 +10,11 @@ namespace ASPWebsiteShopping.Data
             new Claim("Edit Product","Edit Product"),
             new Claim("List Product","List Product"),
             new Claim("Delete Product","Delete Product"),
+            //Category
+            new Claim("Delete Category","Delete Category"),
+             new Claim("Edit Category","Edit Category"),
+              new Claim("Create Category","Create Category"),
+               new Claim("List Category","List Category"),
         };
     }
 }

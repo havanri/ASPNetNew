@@ -151,6 +151,7 @@ namespace ASPWebsiteShopping.Controllers
             
         }
         [HttpGet]
+        [Authorize(Policy = "EditProduct")]
         public IActionResult Edit(int? id)
         {
             ProductViewModel model = new ProductViewModel();
@@ -361,6 +362,7 @@ namespace ASPWebsiteShopping.Controllers
                 return null;
             }
         }
+        [Authorize(Policy = "DeleteProduct")]
         public void Delete(int? id)
         {
             var product = _productService.GetProductById(id);
