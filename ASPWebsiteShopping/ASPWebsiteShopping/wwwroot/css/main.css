@@ -35,3 +35,36 @@
     margin-top: 10px;
     width: 100%;
 }
+.ripro{
+    color: red;
+    font-size:20px;
+}
+.hero__categories__all {
+    background: #666666;
+    padding: 10px 25px 10px 40px;
+    position: relative;
+    cursor: pointer;
+    color: beige;
+}
+
+.hero__categories ul {
+    border: 1px solid #666666;
+    padding-top: 10px;
+    padding-bottom: 12px;
+}
+
+    .hero__categories ul li a {
+        font-size: 16px;
+        color: black;
+        line-height: 39px;
+        display: block;
+        padding-left: 40px;
+    }
+
+        .hero__categories ul li a:hover {
+            background: #666666;
+            color: beige;
+        }
+
+.hero__categories {
+    width: 18rem;
