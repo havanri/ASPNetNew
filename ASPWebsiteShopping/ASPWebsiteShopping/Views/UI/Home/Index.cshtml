@@ -4,7 +4,7 @@
 	ViewData["Title"] = "Home Page";
 
 }
-@model UIHomeViewsModel		
+@model HomeViewModel	
 	<!-- Slider -->
 	<section class="section-slide">
 		<div class="wrap-slick1">
@@ -56,34 +56,37 @@
 						</div>
 					</div>
 				</div>
+			@*@foreach (var slider in Model.Sliders)
+			{
+						<div class="item-slick1" style="background-image: url(../@slider.ImagePath);">
+						<div class="container h-full">
+							<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
+								<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
+									<span class="ltext-101 cl2 respon2">
+										@slider.Description
+									</span>
+								</div>
 
-			<div class="item-slick1" style="background-image: url(https://localhost:7099/lib/cozastore/images/slide-03.jpg);">
-					<div class="container h-full">
-						<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-							<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
-								<span class="ltext-101 cl2 respon2">
-									Bộ Sưu Tập Nam 2023
-								</span>
-							</div>
-								
-							<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
-								<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-									ƯU ĐÃI GIẢM GIÁ CỰC SỐC !!!
-								</h2>
-							</div>
-								
-							<div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
-								<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-									Mua Ngay
-								</a>
+								<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
+									<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
+										ƯU ĐÃI GIẢM GIÁ CỰC SỐC !!!
+									</h2>
+								</div>
+
+								<div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
+									<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
+										Mua Ngay
+									</a>
+								</div>
 							</div>
 						</div>
 					</div>
-				</div>
+			}*@
+			
 			</div>
 		</div>
 	</section>
-
+	<!--/End Slider-->
 
 	<!-- Banner -->
 	<div class="sec-banner bg0 p-t-80 p-b-50">
@@ -403,11 +406,8 @@
 
 		<style>
 		</style>
-				
+				<!--Category-->
 			<div class="row">
-				
-					
-				
 				<div class="col-lg-3">
                     <div class="hero__categories">
                         <div class="hero__categories__all">
@@ -417,16 +417,16 @@
                         <ul>
 						@foreach (var ct in Model.Categories)
 						{
-                            <li><a href="#">@ct.Name</a></li>
+                            <li><a asp-controller="cat" asp-action=@ct.Slug>@ct.Name</a></li>
 						}
                             
                         </ul>
                     </div>
                 </div>
-			
+			<!--/End Category-->
 				<div class="col-9">
 			<div class="row isotope-grid">
-			@foreach (var pr in Model.products)
+			@foreach (var pr in Model.Products)
 			{
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
 					<!-- Block2 -->

@@ -9,5 +9,6 @@ namespace ASPWebsiteShopping.Services
         IEnumerable<Category> GetAllCategories();
         Category GetCategoryById(int? id);
         void UpdateCategory(Category category);
+        Category GetCategoryBySlug(string? slug);
     }
 }

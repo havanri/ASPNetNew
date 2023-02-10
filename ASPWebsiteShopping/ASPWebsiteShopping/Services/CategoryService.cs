@@ -40,5 +40,14 @@ namespace ASPWebsiteShopping.Services
             _db.SaveChanges();
         }
 
+        public Category GetCategoryBySlug(string? slug)
+        {
+            if (slug == null || slug == "")
+            {
+                return null;
+            }
+            var category = _db.Categories.Include(p=>p.Products).FirstOrDefault(x => x.Slug == slug);
+            return category;
+        }
     }
 }

@@ -2,7 +2,7 @@
 using ASPWebsiteShopping.Services;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ASPWebsiteShopping.Controllers
+namespace ASPWebsiteShopping.Controllers.UI
 {
     [Route("pro")]
     public class ProductDetailController : Controller
@@ -10,25 +10,25 @@ namespace ASPWebsiteShopping.Controllers
 
         private readonly IProductService _productService;
         private readonly IAttributeService _attributeService;
-        public ProductDetailController(IProductService productService,IAttributeService attributeService)
+        public ProductDetailController(IProductService productService, IAttributeService attributeService)
         {
             _productService = productService;
-            _attributeService = attributeService;   
+            _attributeService = attributeService;
         }
 
         [Route("{slug?}")]
         public IActionResult Detail(string? slug)
         {
             var model = new DetailProductViewModel();
-            var product  = _productService.GetProductBySlug(slug);
-            model.Product= product;
+            var product = _productService.GetProductBySlug(slug);
+            model.Product = product;
 
 
             //get attribute and species of attribute's of product
             List<ProductAttribute> productAttributes = _attributeService.GetAttributeByProduct(product).ToList();
             foreach (var attribute in productAttributes.ToList())
             {
-                if (attribute.ListSpecies.Count==0)
+                if (attribute.ListSpecies.Count == 0)
                 {
                     productAttributes.Remove(attribute);
                 }

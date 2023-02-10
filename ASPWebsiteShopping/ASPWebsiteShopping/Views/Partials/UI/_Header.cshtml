@@ -8,36 +8,45 @@
 			<nav class="limiter-menu-desktop container">
 
 				<!-- Logo desktop -->
-				<a asp-controller="Test" asp-action="Index" class="logo">
+				<a asp-controller="Home" asp-action="Index" class="logo">
 					<img src="~/lib/cozastore/images/icons/logo-01.png" alt="IMG-LOGO">
 				</a>
 
 				<!-- Menu desktop -->
 				<div class="menu-desktop">
-					<ul class="main-menu">
-						<li>
-							<a asp-controller="UI" asp-action="Index">Trang Chủ</a>
-							
+					<ul class="main-menu ">
+						<li class="@if(@ViewContext.RouteData.Values["controller"].Equals("Home")){
+               @Html.Raw("active-menu")
+           }">
+							<a asp-controller="Home" asp-action="Index">Trang Chủ</a>
 						</li>
 
-						<li class="active-menu">
-							<a asp-controller="UI" asp-action="Shop">Sản Phẩm</a>
+						<li class="@if(@ViewContext.RouteData.Values["controller"].Equals("Shop")){
+               @Html.Raw("active-menu")
+           }">
+							<a asp-controller="Shop" asp-action="Index">Sản Phẩm</a>
 						</li>
 
 						@*<li class="label1" data-label1="hot">
 							<a href="shoping-cart.html">Features</a>
 						</li>*@
 
-						<li>
-							<a asp-controller="UI" asp-action="Blog">Blog</a>
+						<li class="@if(@ViewContext.RouteData.Values["controller"].Equals("Blog")){
+               @Html.Raw("active-menu")
+           }">
+							<a asp-controller="Blog" asp-action="Index">Blog</a>
 						</li>
 
-						<li>
-							<a asp-controller="UI" asp-action="About">About</a>
+						<li class="@if(@ViewContext.RouteData.Values["controller"].Equals("About")){
+               @Html.Raw("active-menu")
+           }">
+							<a asp-controller="About" asp-action="Index">About</a>
 						</li>
 
-						<li>
-							<a asp-controller="UI" asp-action="Contact">Contact</a>
+						<li class="@if(@ViewContext.RouteData.Values["controller"].Equals("Contact")){
+               @Html.Raw("active-menu")
+           }">
+							<a asp-controller="Contact" asp-action="Index">Contact</a>
 						</li>
 					</ul>
 				</div>
