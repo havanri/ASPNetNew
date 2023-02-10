@@ -16,28 +16,28 @@
 				<div class="menu-desktop">
 					<ul class="main-menu">
 						<li>
-							<a asp-controller="Test" asp-action="Index">Trang Chủ</a>
+							<a asp-controller="UI" asp-action="Index">Trang Chủ</a>
 							
 						</li>
 
 						<li class="active-menu">
-							<a asp-controller="Test" asp-action="Shop">Sản Phẩm</a>
+							<a asp-controller="UI" asp-action="Shop">Sản Phẩm</a>
 						</li>
 
-						<li class="label1" data-label1="hot">
+						@*<li class="label1" data-label1="hot">
 							<a href="shoping-cart.html">Features</a>
+						</li>*@
+
+						<li>
+							<a asp-controller="UI" asp-action="Blog">Blog</a>
 						</li>
 
 						<li>
-							<a href="blog.html">Blog</a>
+							<a asp-controller="UI" asp-action="About">About</a>
 						</li>
 
 						<li>
-							<a href="about.html">About</a>
-						</li>
-
-						<li>
-							<a asp-controller="Test" asp-action="Contact">Contact</a>
+							<a asp-controller="UI" asp-action="Contact">Contact</a>
 						</li>
 					</ul>
 				</div>

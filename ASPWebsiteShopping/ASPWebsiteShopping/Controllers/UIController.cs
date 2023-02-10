@@ -23,6 +23,10 @@ namespace ASPWebsiteShopping.Controllers
         {
             return View("Views/UI/Contact/Index.cshtml");
         }
+        public IActionResult About()
+        {
+            return View("Views/UI/About/Index.cshtml");
+        }
         public IActionResult Index()
         {
             var model = new UIHomeViewsModel();
@@ -33,6 +37,10 @@ namespace ASPWebsiteShopping.Controllers
         public IActionResult Shop()
         {
             return View("Views/UI/Products/Index.cshtml");
+        }
+        public IActionResult blog()
+        {
+            return View("Views/UI/Blog/Index.cshtml");
         }
         public IActionResult ProductDetail()
         {
