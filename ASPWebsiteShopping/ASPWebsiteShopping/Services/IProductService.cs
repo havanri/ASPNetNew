@@ -8,6 +8,7 @@ namespace ASPWebsiteShopping.Services
         void DeleteById(Product product);
         IEnumerable<Product> GetAllProducts();
         Product GetProductById(int? id);
+        Product GetProductBySlug(string? slug);
         void UpdateProduct(Product product);
 
     }

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ASPWebsiteShopping.Controllers
 {
+    [Authorize(Policy = "ProductRole")]
     public class CategoryController : Controller
     {
         private readonly ICategoryService _categoryService;

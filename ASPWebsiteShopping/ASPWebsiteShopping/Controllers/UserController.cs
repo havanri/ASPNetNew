@@ -17,11 +17,13 @@ namespace ASPWebsiteShopping.Controllers
 	{
         private readonly UserManager<IdentityUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly SignInManager<IdentityUser> _signInManager;
 
-        public UserController(UserManager<IdentityUser> userManager,RoleManager<IdentityRole> roleManager)
+        public UserController(UserManager<IdentityUser> userManager,RoleManager<IdentityRole> roleManager, SignInManager<IdentityUser> signInManager)
         {
-            _userManager= userManager;
-            _roleManager= roleManager;
+            _userManager = userManager;
+            _roleManager = roleManager;
+            _signInManager = signInManager;
         }
 
         public async Task<IActionResult> Index()
@@ -30,6 +32,7 @@ namespace ASPWebsiteShopping.Controllers
             role.Name = "Admin";
             await _roleManager.CreateAsync(role);*/
             var users =_userManager.Users.ToList();
+            ViewData["isSidebar"] = "User";
             return View("Views/Admin/User/Index.cshtml", users);
         }
         public IActionResult Create()
@@ -52,6 +55,7 @@ namespace ASPWebsiteShopping.Controllers
                     if(createUserViewModel.User.Roles != null)
                     {
                         await _userManager.AddToRolesAsync(user, createUserViewModel.User.Roles);
+                        await _signInManager.RefreshSignInAsync(user);
                     }
                     return RedirectToAction("Index");
                 }
@@ -120,7 +124,7 @@ namespace ASPWebsiteShopping.Controllers
                                 await _userManager.AddToRoleAsync(user, item);
                             }
                         }
-
+                        await _signInManager.RefreshSignInAsync(user);
                     }
                     return RedirectToAction("Index");
                 }
@@ -182,7 +186,10 @@ namespace ASPWebsiteShopping.Controllers
             }
             //add 
             result = await _userManager.AddClaimsAsync(user,userClaimsViewModel.Claims.Where(c=>c.IsSelected).Select(c=>new Claim(c.ClaimType,c.ClaimType)));
-
+            /*            IAuthenticationManager authenticationManager = HttpContext.GetOwinContext().Authentication;
+                        authenticationManager.SignOut("ApplicationCookie");
+                        authenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = false }, identity);*/
+            await _signInManager.RefreshSignInAsync(user);
             if (!result.Succeeded)
             {
                 ModelState.AddModelError("", "Không thể thêm tùy chọn quyền này cho người dùng");

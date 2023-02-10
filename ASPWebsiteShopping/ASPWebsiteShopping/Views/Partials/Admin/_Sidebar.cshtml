@@ -57,8 +57,12 @@
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link active">
+          <li class="nav-item @if(@ViewContext.RouteData.Values["controller"].Equals("Product") || @ViewContext.RouteData.Values["controller"].Equals("Category") || @ViewContext.RouteData.Values["controller"].Equals("Tag") || @ViewContext.RouteData.Values["controller"].Equals("Attribute") || @ViewContext.RouteData.Values["controller"].Equals("Species")){
+               @Html.Raw("menu-open is-opening")
+           }">
+            <a href="#" class="nav-link @if(@ViewContext.RouteData.Values["controller"].Equals("Product") || @ViewContext.RouteData.Values["controller"].Equals("Category") || @ViewContext.RouteData.Values["controller"].Equals("Tag") || @ViewContext.RouteData.Values["controller"].Equals("Attribute") || @ViewContext.RouteData.Values["controller"].Equals("Species")){
+               @Html.Raw("active")
+           }">
               <i class="bi bi-archive nav-icon"></i>
               <p>
                 Sản phẩm
@@ -68,30 +72,40 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a asp-controller="Product" asp-action="Index" class="nav-link">
+                <a asp-controller="Product" asp-action="Index" class="nav-link @if(@ViewContext.RouteData.Values["controller"].Equals("Product") && @ViewContext.RouteData.Values["action"].Equals("Index")){
+               @Html.Raw("sb-selected")
+} ">
                   <p>Tất cả sản phẩm</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a asp-controller="Product" asp-action="Create" class="nav-link">
+                <a asp-controller="Product" asp-action="Create" class="nav-link @if(@ViewContext.RouteData.Values["controller"].Equals("Product") && @ViewContext.RouteData.Values["action"].Equals("Create")){
+               @Html.Raw("sb-selected")
+}">
 
                   <p>Thêm mới</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a asp-controller="Category" asp-action="Index" class="nav-link">
+                <a asp-controller="Category" asp-action="Index" class="nav-link @if(@ViewContext.RouteData.Values["controller"].Equals("Category") && @ViewContext.RouteData.Values["action"].Equals("Index")){
+               @Html.Raw("sb-selected")
+}">
 
                   <p>Danh mục</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a asp-controller="Tag" asp-action="Index" class="nav-link">
+                <a asp-controller="Tag" asp-action="Index" class="nav-link @if(@ViewContext.RouteData.Values["controller"].Equals("Tag") && @ViewContext.RouteData.Values["action"].Equals("Index")){
+               @Html.Raw("sb-selected")
+}">
 
                   <p>Từ khóa</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a asp-controller="ProductAttribute" asp-action="Index" class="nav-link">
+                <a asp-controller="ProductAttribute" asp-action="Index" class="nav-link @if(@ViewContext.RouteData.Values["controller"].Equals("Attribute") && @ViewContext.RouteData.Values["action"].Equals("Index")){
+               @Html.Raw("sb-selected")
+}">
 
                   <p>Các thuộc tính</small></p>
                 </a>
@@ -104,8 +118,12 @@
               </li>
             </ul>
           </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
+          <li class="nav-item  @if(@ViewContext.RouteData.Values["controller"].Equals("Slider") || @ViewContext.RouteData.Values["controller"].Equals("Setting")){
+               @Html.Raw("menu-open is-opening")
+           }">
+            <a href="#" class="nav-link @if(@ViewContext.RouteData.Values["controller"].Equals("Slider") || @ViewContext.RouteData.Values["controller"].Equals("Setting")){
+               @Html.Raw("active")
+           }">
               <i class="nav-icon bi bi-layers"></i>
               <p>
                 Giao diện
@@ -114,29 +132,40 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a asp-controller="Slider" asp-action="Index" class="nav-link">
+                <a asp-controller="Slider" asp-action="Index" class="nav-link @if(@ViewContext.RouteData.Values["controller"].Equals("Slider") && @ViewContext.RouteData.Values["action"].Equals("Index")){
+               @Html.Raw("sb-selected")
+}">
                   <p>Slider</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a asp-controller="Setting" asp-action="Index" class="nav-link">
+                <a asp-controller="Setting" asp-action="Index" class="nav-link @if(@ViewContext.RouteData.Values["controller"].Equals("Setting") && @ViewContext.RouteData.Values["action"].Equals("Index")){
+               @Html.Raw("sb-selected")
+}">
                   <p>Liên kết cá nhân</p>
                 </a>
               </li>
             </ul>
           </li>
           </li>
-          <li class="nav-item">
-            <a asp-controller="Menu" asp-action="Index" class="nav-link">
+          <li class="nav-item  @if(@ViewContext.RouteData.Values["controller"].Equals("Menu")){
+               @Html.Raw("menu-open is-opening")
+           }">
+            <a asp-controller="Menu" asp-action="Index" class="nav-link  @if(@ViewContext.RouteData.Values["controller"].Equals("Menu")){
+               @Html.Raw("active")
+           }">
               <i class="nav-icon bi bi-menu-button"></i>
               <p>
                 Menu
               </p>
             </a>
           </li>
-           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon bi bi-person-check"></i>
+           <li class="nav-item @if(@ViewContext.RouteData.Values["controller"].Equals("User") || @ViewContext.RouteData.Values["controller"].Equals("Role") || @ViewContext.RouteData.Values["controller"].Equals("Permission")){
+               @Html.Raw("menu-open is-opening");
+           }" >
+            <a href="#" class="nav-link  @if(@ViewContext.RouteData.Values["controller"].Equals("User") || @ViewContext.RouteData.Values["controller"].Equals("Role") || @ViewContext.RouteData.Values["controller"].Equals("Permission")){
+               @Html.Raw("active")}">
+              <i class="nav-icon bi bi-person-check "></i>
               <p>
                 Thành viên
                 <i class="right fas fa-angle-left"></i>
@@ -144,19 +173,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a asp-controller="User" asp-action="Index" class="nav-link">
+                <a asp-controller="User" asp-action="Index" class="nav-link @if(@ViewContext.RouteData.Values["controller"].Equals("User") && @ViewContext.RouteData.Values["action"].Equals("Index")){
+               @Html.Raw("sb-selected")
+}">
 
                   <p>Tất cả người dùng</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a  asp-controller="User" asp-action="Create" class="nav-link">
+                <a  asp-controller="User" asp-action="Create" class="nav-link @if(@ViewContext.RouteData.Values["controller"].Equals("User") && @ViewContext.RouteData.Values["action"].Equals("Create")){
+               @Html.Raw("sb-selected")
+}">
 
                   <p>Thêm mới</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a  asp-controller="Role" asp-action="Index" class="nav-link">
+                <a  asp-controller="Role" asp-action="Index" class="nav-link @if(@ViewContext.RouteData.Values["controller"].Equals("Role") && @ViewContext.RouteData.Values["action"].Equals("Index")){
+               @Html.Raw("sb-selected")
+}">
 
                   <p>Vai trò</p>
                 </a>

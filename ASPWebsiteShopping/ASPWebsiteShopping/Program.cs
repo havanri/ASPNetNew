@@ -1,6 +1,7 @@
 using ASPWebsiteShopping.Data;
 using ASPWebsiteShopping.Models;
 using ASPWebsiteShopping.Services;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
@@ -53,6 +54,15 @@ builder.Services.AddAuthorization(options =>
     options.AddPolicy("ListCategory", policy => policy.RequireClaim("List Category"));
 
 });
+/*builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.AccessDeniedPath = new PathString("/Account/Denied");
+        options.LoginPath = new PathString("/Account/Login");
+        options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+        options.SlidingExpiration = true;
+        options.AccessDeniedPath = "/Forbidden/";
+    });*/
 /*builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>();*/
 
 /*builder.Services.AddIdentity<ModelIdentityUser,IdentityRole>();*/
@@ -78,6 +88,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 app.UseAuthentication();
+
 app.UseAuthorization();
 
 //route

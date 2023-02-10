@@ -41,6 +41,7 @@
   <ItemGroup>
     <Folder Include="Data\Migrations\" />
     <Folder Include="Views\UI\Cart\" />
+    <Folder Include="Views\UI\Home\" />
     <Folder Include="Views\UI\Shop\" />
     <Folder Include="wwwroot\image\" />
   </ItemGroup>

@@ -47,6 +47,7 @@ namespace ASPWebsiteShopping.Controllers
         {
             ProductViewModel mymodel = new ProductViewModel();
             mymodel.Products = _productService.GetAllProducts();
+            ViewData["isSidebar"] = "Product";
             return View("Views/Admin/Product/Index.cshtml", mymodel);
         }
        

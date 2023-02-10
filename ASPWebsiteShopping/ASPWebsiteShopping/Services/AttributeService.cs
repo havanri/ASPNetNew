@@ -15,6 +15,10 @@ namespace ASPWebsiteShopping.Services
         {
             return _db.ProductAttributes.Include(e => e.ListSpecies).ToList();
         }
+        public IEnumerable<ProductAttribute> GetAttributeByProduct(Product product)
+        {
+            return _db.ProductAttributes.Include(e => e.ListSpecies.Where(l=>l.ListProduct.Contains(product)));
+        }
         public ProductAttribute GetAttributeById(int? id)
         {
             if (id == null || id == 0)

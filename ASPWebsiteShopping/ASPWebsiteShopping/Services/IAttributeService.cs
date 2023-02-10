@@ -9,5 +9,6 @@ namespace ASPWebsiteShopping.Services
         IEnumerable<ProductAttribute> GetAllAttributes();
         ProductAttribute GetAttributeById(int? id);
         void UpdateAttribute(ProductAttribute Attribute);
+        IEnumerable<ProductAttribute> GetAttributeByProduct(Product product);
     }
 }
