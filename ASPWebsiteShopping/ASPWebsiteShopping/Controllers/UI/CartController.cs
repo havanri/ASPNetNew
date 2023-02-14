@@ -7,7 +7,7 @@ namespace ASPWebsiteShopping.Controllers.UI
 	{
 		public IActionResult Index()
 		{
-			return View();
-		}
+            return View("Views/UI/Checkout/Index.cshtml");
+        }
 	}
 }

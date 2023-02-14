@@ -29,5 +29,11 @@ namespace ASPWebsiteShopping.Controllers.UI
             model.Sliders = _sliderService.GetList();
             return View("Views/UI/Home/Index.cshtml", model);
         }
+        [HttpGet]
+        [Route("infCart")]
+        public List<Product> GetInformationProductForCart()
+        {
+            return _productService.onlyAllProduct().ToList();
+        }
 	}
 }

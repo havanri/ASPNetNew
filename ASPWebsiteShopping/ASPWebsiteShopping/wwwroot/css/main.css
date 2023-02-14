@@ -69,3 +69,6 @@
 .hero__categories {
     width: 18rem;
 }
+.sb-selected {
+    background: gray;
+}

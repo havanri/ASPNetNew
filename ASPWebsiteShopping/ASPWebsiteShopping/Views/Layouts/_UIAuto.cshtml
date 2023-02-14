@@ -35,15 +35,17 @@
 	<link rel="stylesheet" type="text/css" href="~/lib/cozastore/css/main.css">
 	<link rel="stylesheet" type="text/css" href="~/css/main.css" />
 <!--===============================================================================================-->
+@RenderSection("css",false)
 </head>
 <body class="animsition">
 	
 	<!-- Header -->
 	<partial name="~/Views/Partials/UI/_Header.cshtml" />
 	<!--/Header-->
+
 	<!-- Cart Modal -->
 	<partial name="~/Views/Partials/UI/_CartModal.cshtml" />
-	<!--/HCart Modal-->
+	<!--/Cart Modal-->
 
 		@RenderBody()
 
@@ -51,8 +53,10 @@
 	<partial name="~/Views/Partials/UI/_Footer.cshtml" />
 	<!-- /Footer -->
 	
+
 <!--===============================================================================================-->	
 	<script src="~/lib/cozastore/vendor/jquery/jquery-3.2.1.min.js"></script>
+
 <!--===============================================================================================-->
 	<script src="~/lib/cozastore/vendor/animsition/js/animsition.min.js"></script>
 <!--===============================================================================================-->
@@ -152,6 +156,8 @@
 	</script>
 <!--===============================================================================================-->
 	<script src="~/lib/cozastore/js/main.js"></script>
+	@RenderSection("js",false)
+	<script src="~/js/cart.js"></script>
 	
 
 </body>

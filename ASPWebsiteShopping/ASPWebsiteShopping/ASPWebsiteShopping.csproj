@@ -35,6 +35,7 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.11" />
     <PackageReference Include="NPOI" Version="2.6.0" />
     <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="6.0.2" />
+    <PackageReference Include="RestSharp" Version="108.0.3" />
     <PackageReference Include="ServiceStack.Interfaces" Version="6.5.0" />
   </ItemGroup>
 

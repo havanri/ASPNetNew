@@ -49,5 +49,10 @@ namespace ASPWebsiteShopping.Services
             var product = _db.Products.Include(t => t.Tags).Include(s => s.ListProductSpecies).Include(r => r.ListSpecies).ThenInclude(ra => ra.ProductAttribute).Include(i => i.ProductImages).FirstOrDefault(x => x.Slug == slug);
             return product;
         }
+
+        public IEnumerable<Product> onlyAllProduct()
+        {
+            return _db.Products;
+        }
     }
 }

@@ -26,6 +26,8 @@ namespace ASPWebsiteShopping.Models
         public virtual List<ProductImage> ProductImages { get; set; }
         public ICollection<Tag> Tags { get; set; }
         public List<ProductTag> ProductTags { get; set; }
+        public ICollection<Order> Orders { get; set; }
+        public List<OrderItem> OrderItems { get; set; }
 
         public ICollection<Species> ListSpecies { get; set; }
         public List<ProductSpecies> ListProductSpecies { get; set; }

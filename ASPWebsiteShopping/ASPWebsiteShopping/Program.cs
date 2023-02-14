@@ -38,6 +38,8 @@ builder.Services.AddScoped<ISettingService, SettingService>();
 builder.Services.AddScoped<IAttributeService, AttributeService>();
 builder.Services.AddScoped<ISpeciesService, SpeciesService>();
 builder.Services.AddScoped<IProductSpeciesService, ProductSpeciesService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
+builder.Services.AddScoped<IOrderItemService, OrderItemService>();
 builder.Services.AddAuthorization(options =>
 {
     //Role

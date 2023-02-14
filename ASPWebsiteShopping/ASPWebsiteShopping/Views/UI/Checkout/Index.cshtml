@@ -3,91 +3,7 @@
 	ViewData["Title"] = "Home Page";
 
 }
-<div class="wrap-header-cart js-panel-cart">
-	<div class="s-full js-hide-cart"></div>
-
-	<div class="header-cart flex-col-l p-l-65 p-r-25">
-		<div class="header-cart-title flex-w flex-sb-m p-b-8">
-			<span class="mtext-103 cl2">
-				Your Cart
-			</span>
-
-			<div class="fs-35 lh-10 cl2 p-lr-5 pointer hov-cl1 trans-04 js-hide-cart">
-				<i class="zmdi zmdi-close"></i>
-			</div>
-		</div>
-
-		<div class="header-cart-content flex-w js-pscroll">
-			<ul class="header-cart-wrapitem w-full">
-				<li class="header-cart-item flex-w flex-t m-b-12">
-					<div class="header-cart-item-img">
-						<img src="images/item-cart-01.jpg" alt="IMG">
-					</div>
-
-					<div class="header-cart-item-txt p-t-8">
-						<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-							White Shirt Pleat
-						</a>
-
-						<span class="header-cart-item-info">
-							1 x $19.00
-						</span>
-					</div>
-				</li>
-
-				<li class="header-cart-item flex-w flex-t m-b-12">
-					<div class="header-cart-item-img">
-						<img src="images/item-cart-02.jpg" alt="IMG">
-					</div>
-
-					<div class="header-cart-item-txt p-t-8">
-						<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-							Converse All Star
-						</a>
-
-						<span class="header-cart-item-info">
-							1 x $39.00
-						</span>
-					</div>
-				</li>
-
-				<li class="header-cart-item flex-w flex-t m-b-12">
-					<div class="header-cart-item-img">
-						<img src="images/item-cart-03.jpg" alt="IMG">
-					</div>
-
-					<div class="header-cart-item-txt p-t-8">
-						<a href="#" class="header-cart-item-name m-b-18 hov-cl1 trans-04">
-							Nixon Porter Leather
-						</a>
-
-						<span class="header-cart-item-info">
-							1 x $17.00
-						</span>
-					</div>
-				</li>
-			</ul>
-
-			<div class="w-full">
-				<div class="header-cart-total w-full p-tb-40">
-					Total: $75.00
-				</div>
-
-				<div class="header-cart-buttons flex-w w-full">
-					<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-						View Cart
-					</a>
-
-					<a href="shoping-cart.html" class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-						Check Out
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
-
-
+@model CheckOutViewModel
 <!-- breadcrumb -->
 <div class="container">
 	<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
@@ -104,7 +20,7 @@
 
 
 <!-- Shoping Cart -->
-<form class="bg0 p-t-75 p-b-85">
+@*<form class="bg0 p-t-75 p-b-85" method="POST" enctype="multipart/form-data">*@
 	<div class="container">
 		<div class="row">
 			<div class="col-lg-10 col-xl-7 m-lr-auto m-b-50">
@@ -118,54 +34,12 @@
 								<th class="column-4">Quantity</th>
 								<th class="column-5">Total</th>
 							</tr>
+							<!--Cart item-->
 
-							<tr class="table_row">
-								<td class="column-1">
-									<div class="how-itemcart1">
-										<img src="~/lib/cozastore/images/item-cart-04.jpg" alt="IMG">
-									</div>
-								</td>
-								<td class="column-2">Fresh Strawberries</td>
-								<td class="column-3">$ 36.00</td>
-								<td class="column-4">
-									<div class="wrap-num-product flex-w m-l-auto m-r-0">
-										<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-											<i class="fs-16 zmdi zmdi-minus"></i>
-										</div>
 
-										<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product1" value="1">
+							<!--/Cart item-->
 
-										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-											<i class="fs-16 zmdi zmdi-plus"></i>
-										</div>
-									</div>
-								</td>
-								<td class="column-5">$ 36.00</td>
-							</tr>
 
-							<tr class="table_row">
-								<td class="column-1">
-									<div class="how-itemcart1">
-										<img src="~/lib/cozastore/images/item-cart-05.jpg" alt="IMG">
-									</div>
-								</td>
-								<td class="column-2">Lightweight Jacket</td>
-								<td class="column-3">$ 16.00</td>
-								<td class="column-4">
-									<div class="wrap-num-product flex-w m-l-auto m-r-0">
-										<div class="btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m">
-											<i class="fs-16 zmdi zmdi-minus"></i>
-										</div>
-
-										<input class="mtext-104 cl3 txt-center num-product" type="number" name="num-product2" value="1">
-
-										<div class="btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m">
-											<i class="fs-16 zmdi zmdi-plus"></i>
-										</div>
-									</div>
-								</td>
-								<td class="column-5">$ 16.00</td>
-							</tr>
 						</table>
 					</div>
 
@@ -199,46 +73,64 @@
 						</div>
 
 						<div class="size-209">
-							<span class="mtext-110 cl2">
-								$79.65
+							<span class="mtext-110 cl2 js-sub-total">
+								<!--subtotal-->
 							</span>
 						</div>
 					</div>
 
 					<div class="flex-w flex-t bor12 p-t-15 p-b-30">
-						<div class="size-208 w-full-ssm">
+					@*<div class="size-208 w-full-ssm">
 							<span class="stext-110 cl2">
 								Shipping:
 							</span>
+						</div>*@
+						<div class="payment-options">
+							<h4 class="mb-2" style="display: block!important;">Phương thức thanh toán</h4>
+							<span>
+								<label ><input  type="radio" style="display:inline" checked>Thanh toán khi nhận
+									hàng(COD)</label>
+							</span>
+							<span>
+								<label><input name="payment_method" style="display:inline" type="radio">Thẻ tín dụng/ghi nợ(Chưa hỗ trợ)</label>
+							</span>
+							<span>
+								<label><input name="payment_method" style="display:inline" type="radio">Thanh toán bằng PayPal(Chưa hỗ trợ)</label>
+							</span>
 						</div>
-
 						<div class="size-209 p-r-18 p-r-0-sm w-full-ssm">
-							<p class="stext-111 cl6 p-t-2">
-								There are no shipping methods available. Please double check your address, or contact us if you need any help.
-							</p>
 
 							<div class="p-t-15">
 								<span class="stext-112 cl8">
 									Calculate Shipping
 								</span>
 
+								<form id="checkOutForm">
 								<div class="rs1-select2 rs2-select2 bor8 bg0 m-b-12 m-t-9">
-									<select class="js-select2" name="time">
-										<option>Select a country...</option>
-										<option>USA</option>
-										<option>UK</option>
-									</select>
-									<div class="dropDownSelect2"></div>
+									 <select  name="Province" class="form-select form-select-sm mb-3" id="city" aria-label=".form-select-sm">
+			<option value="" selected>Tỉnh/Thành phố</option>
+		</select>
+
+		<select  class="form-select form-select-sm mb-3" name="District" id="district" aria-label=".form-select-sm">
+			<option value="" selected>Quận/Huyện</option>
+		</select>
+
+		<select  class="form-select form-select-sm" name="Ward" id="ward" aria-label=".form-select-sm">
+			<option value="" selected>Phường/Xã</option>
+		</select>
 								</div>
 
 								<div class="bor8 bg0 m-b-12">
-									<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="state" placeholder="State /  country">
+									<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="Address"   placeholder="Địa chỉ cụ thể *">
+								</div>
+								<div class="bor8 bg0 m-b-12">
+									<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="Phone"   placeholder="Phone">
 								</div>
 
 								<div class="bor8 bg0 m-b-22">
-									<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="postcode" placeholder="Postcode / Zip">
+									<textarea class="stext-111 cl8 plh3 size-111 p-lr-15" style="height:80px!important;"  name="Notes" type="text"  placeholder="Ghi chú đơn hàng"></textarea>
 								</div>
-
+								</form>
 								<div class="flex-w">
 									<div class="flex-c-m stext-101 cl2 size-115 bg8 bor13 hov-btn3 p-lr-15 trans-04 pointer">
 										Update Totals
@@ -257,17 +149,60 @@
 						</div>
 
 						<div class="size-209 p-t-1">
-							<span class="mtext-110 cl2">
-								$79.65
+							<span class="mtext-110 cl2 js-total">
+
 							</span>
 						</div>
 					</div>
 
-					<button class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
+					<button id="js-submit-checkout" class="flex-c-m stext-101 cl0 size-116 bg3 bor14 hov-btn3 p-lr-15 trans-04 pointer">
 						Proceed to Checkout
 					</button>
 				</div>
 			</div>
 		</div>
 	</div>
-</form>
+
+@*</form>*@
+@section js{
+							<script src="~/js/checkout.js"></script>
+
+							<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>
+							<script src="~/js/address.js"></script>
+							<script>
+								 $(document).ready(function() {
+
+									// GET BY ID
+											 $("#js-submit-checkout").click(function() {
+												let cartsModelRequest = JSON.parse(localStorage.getItem("carts"));
+												console.log(cartsModelRequest);
+															var formRequest = document.getElementById("checkOutForm")
+													var formData = new FormData(formRequest);
+													var data = {};
+
+														for(var [key, val] of formData.entries()){
+																data[key] = val
+														}
+														console.log("dataCheckOut", data)
+											var inp ={
+														cartsModelRequest: cartsModelRequest,
+																	informationClient: data,
+											};
+											console.log("inp", inp)
+											$.ajax({
+												type: 'POST',
+													url: "/checkout/Submit-form-cart",
+															data: JSON.stringify(inp),
+														contentType:"application/json; charset=utf-8",
+													dataType: "json",
+												success: function(data){
+															console.log("data", data)
+												},
+												error: function(data){
+														console.log("error", data)
+												}
+											});
+										});
+								});
+							</script>
+}}

@@ -10,6 +10,7 @@ namespace ASPWebsiteShopping.Services
         Product GetProductById(int? id);
         Product GetProductBySlug(string? slug);
         void UpdateProduct(Product product);
+        IEnumerable<Product> onlyAllProduct();
 
     }
 }
