@@ -163,15 +163,15 @@
 									<div class="tab-pane fade" id="information" role="tabpanel">
 										<div class="row">
 											<div class="col-sm-10 col-md-8 col-lg-6 m-lr-auto">
-												<ul class="p-lr-28 p-lr-15-sm">
+												<ul class="">
 													@if (@Model.Attributes.Count > 0)
 													{
 														@foreach (var attributeItem in @Model.Attributes)
 														{
 															var last_item = @attributeItem.ListSpecies.Last();
-															<li class="flex-w flex-t p-b-7">
-																<span class="stext-102 cl3 size-205">
-																	@attributeItem.Name
+															<li class="flex-w flex-t p-b-7" >
+																<span class="stext-102 cl3">
+																	@attributeItem.Name :
 																</span>
 
 																@foreach (var speciesItem in attributeItem.ListSpecies)
@@ -184,7 +184,7 @@
 																	}
 																	else
 																	{
-																		<span class="stext-102 cl3">
+																		<span class="stext-102 cl3 " >
 																			@speciesItem.Name ,
 																		</span>
 																	}

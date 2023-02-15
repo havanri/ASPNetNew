@@ -1,10 +1,5 @@
 ﻿document.querySelector("body").onload = function () { cartLoad() };
-var money = document.querySelectorAll(".js-money-format");
-for (var i = 0; i <= money.length; i++) {
-    var price = money[i].textContent;
-    console.log(price);
-    money[i].innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(parseInt(price));
-}
+
 function cartLoad() {
     let carts = JSON.parse(localStorage.getItem("carts"));
     var urlRequest = "https://localhost:7099/home/infCart";
@@ -72,7 +67,6 @@ function addToCart(id) {
         } else {
             carts[index].id = id;
             var quantity = (carts[index].quan += 1);
-            editDataProductInCart(quantity);
         }
         localStorage.setItem("carts", JSON.stringify(carts));
         console.log()
@@ -107,7 +101,8 @@ function removeOneTimes(id) {
     cartLoad();
     checkoutLoad();
 }
-function subTotal() {
+
+/*function subTotal() {
     var subTotal = 0;
     var listProductInCart = document.getElementsByClassName("single-product-cart");
     // console.log("length"+listProductInCart.length);
@@ -146,7 +141,7 @@ function subTotal() {
     btnSubTotal.innerHTML = subToTalRoot.split('.').join(',');
     var btnTotal = document.getElementById("cart-total");
     btnTotal.innerHTML = subToTalRoot.split('.').join(',');
-}
+}*/
 function setCookie(name, value, days) {
     var expires = "";
     if (days) {
@@ -158,4 +153,10 @@ function setCookie(name, value, days) {
 }
 function redirectCart(myItem) {
     setCookie("productsOfCart", myItem, 1);
+}
+var money = document.querySelectorAll(".js-money-format");
+for (var i = 0; i < money.length; i++) {
+    var price = money[i].textContent;
+    console.log(price);
+    money[i].innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(parseInt(price));
 }
