@@ -37,7 +37,7 @@ function cartLoad() {
                 //total modal
 
                 var totalModalHtml = document.querySelector(".js-modal-cart-total");
-                totalModalHtml.innerHTML = "Total:  " + new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(total);
+                totalModalHtml.innerHTML = "Tổng Tiền:  " + new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(total);
             }
         },
         error: function (data) {

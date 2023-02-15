@@ -7,7 +7,7 @@ function checkoutLoad() {
     //add header for table
     let newItemHeader = document.createElement("tr");
     newItemHeader.classList.add("table_head");
-    newItemHeader.innerHTML = "<th class='column-1'>Product</th><th class='column-2'></th><th class='column-3'>Price</th><th class='column-4'>Quantity</th><th class='column-5'>Total</th>";
+    newItemHeader.innerHTML = "<th class='column-1'>Ảnh</th><th class='column-2'>Sản Phẩm</th><th class='column-3'>Giá</th><th class='column-4'>Số Lượng</th><th class='column-5'>Thành Tiền</th>";
     checkoutStorage.appendChild(newItemHeader);
     $.ajax({
         type: "GET",

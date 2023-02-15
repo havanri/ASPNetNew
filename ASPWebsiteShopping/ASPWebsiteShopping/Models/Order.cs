@@ -11,9 +11,9 @@ namespace ASPWebsiteShopping.Models
 		public string Notes { get; set; }
 		public string DeliveryAddress { get; set; }
 		public decimal Total { get; set; }
-		public int? CustomerId { get; set; }
+		public int CustomerId { get; set; }
         [ForeignKey("CustomerId")]
-        public virtual Customer Customer { get; set; }
+        public Customer Customer { get; set; }
 
         public ICollection<Product> Products { get; set; }
         public List<OrderItem> OrderItems { get; set; }
