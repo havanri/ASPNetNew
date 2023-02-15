@@ -1,4 +1,10 @@
 ﻿document.querySelector("body").onload = function () { cartLoad() };
+var money = document.querySelectorAll(".js-money-format");
+for (var i = 0; i <= money.length; i++) {
+    var price = money[i].textContent;
+    console.log(price);
+    money[i].innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(parseInt(price));
+}
 function cartLoad() {
     let carts = JSON.parse(localStorage.getItem("carts"));
     var urlRequest = "https://localhost:7099/home/infCart";
