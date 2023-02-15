@@ -121,14 +121,14 @@
 								</div>
 
 								<div class="bor8 bg0 m-b-12">
-									<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="Address"   placeholder="Địa chỉ cụ thể *">
+									<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="Address"   placeholder="Địa chỉ cụ thể *" required>
 								</div>
 								<div class="bor8 bg0 m-b-12">
-									<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="Phone"   placeholder="Phone">
+									<input class="stext-111 cl8 plh3 size-111 p-lr-15" type="text" name="Phone"   placeholder="Phone" required>
 								</div>
 
 								<div class="bor8 bg0 m-b-22">
-									<textarea class="stext-111 cl8 plh3 size-111 p-lr-15" style="height:80px!important;"  name="Notes" type="text"  placeholder="Ghi chú đơn hàng"></textarea>
+									<textarea class="stext-111 cl8 plh3 size-111 p-lr-15" style="height:80px!important;"  name="Notes" type="text"  placeholder="Ghi chú đơn hàng" required></textarea>
 								</div>
 								</form>
 								<div class="flex-w">
@@ -165,6 +165,7 @@
 
 @*</form>*@
 @section js{
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 							<script src="~/js/checkout.js"></script>
 
 							<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"></script>

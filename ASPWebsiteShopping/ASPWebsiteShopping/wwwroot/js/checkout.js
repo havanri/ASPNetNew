@@ -23,7 +23,7 @@ function checkoutLoad() {
                     subTotal += productItem.price * carts[i].quan;
                     let newItem = document.createElement("tr");
                     newItem.classList.add("table_row");
-                    newItem.innerHTML = "<td class='column-1'><div class='how-itemcart1' ><img src='" + productItem.featureImagePath + "' alt='IMG'></div></td><td class='column-2'>" + productItem.name + "</td><td class='column-3'>" + priceRoot + "</td><td class='column-4'><div class='wrap-num-product flex-w m-l-auto m-r-0'><div class='btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m' onclick='removeToCartFromCheckout(" + productItem.id + ")'><i class='fs-16 zmdi zmdi-minus'></i></div><input class='mtext-104 cl3 txt-center num-product' type='number' name='num-product1' value='" + carts[i].quan + "'><div class='btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m' onclick='addToCartFromCheckout(" + productItem.id + ")'><i class='fs-16 zmdi zmdi-plus'></i></div></div></td><td class='column-5'>" +new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format((productItem.price * carts[i].quan))+ "</td>";
+                    newItem.innerHTML = "<td class='column-1'><div class='how-itemcart1' onclick='removeOneTimes(" + productItem.id +")' ><img src='" + productItem.featureImagePath + "' alt='IMG'></div></td><td class='column-2'>" + productItem.name + "</td><td class='column-3'>" + priceRoot + "</td><td class='column-4'><div class='wrap-num-product flex-w m-l-auto m-r-0'><div class='btn-num-product-down cl8 hov-btn3 trans-04 flex-c-m' onclick='removeToCartFromCheckout(" + productItem.id + ")'><i class='fs-16 zmdi zmdi-minus'></i></div><input class='mtext-104 cl3 txt-center num-product' type='number' name='num-product1' value='" + carts[i].quan + "'><div class='btn-num-product-up cl8 hov-btn3 trans-04 flex-c-m' onclick='addToCartFromCheckout(" + productItem.id + ")'><i class='fs-16 zmdi zmdi-plus'></i></div></div></td><td class='column-5'>" + new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format((productItem.price * carts[i].quan)) + "</td>";
                     checkoutStorage.appendChild(newItem);
                 }
                 //subtotal and total
@@ -69,7 +69,6 @@ function addToCartFromCheckout(id) {
         } else {
             carts[index].id = id;
             var quantity = (carts[index].quan += 1);
-            editDataProductInCart(quantity);
         }
         localStorage.setItem("carts", JSON.stringify(carts));
         console.log()
@@ -98,4 +97,16 @@ function removeToCartFromCheckout(id) {
     //reload
     cartLoad();
     checkoutLoad();
+}
+$(function () {
+    $(document).on("click", "#js-submit-checkout", alertSuccessfulCheckout);
+});
+function alertSuccessfulCheckout() {
+    Swal.fire({
+        position: 'top-end',
+        icon: 'success',
+        title: 'Thanh toán thành công !!!',
+        showConfirmButton: false,
+        timer: 1500
+    });
 }

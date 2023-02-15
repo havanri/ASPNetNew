@@ -49,10 +49,12 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="pages/widgets.html" class="nav-link">
+            <a asp-controller="Order" asp-action="Index" class="nav-link  @if(@ViewContext.RouteData.Values["controller"].Equals("Order")){
+               @Html.Raw("active")
+}">
               <i class="nav-icon fas fa-th"></i>
               <p>
-                Widgets
+                Đơn hàng
                 <span class="right badge badge-danger">New</span>
               </p>
             </a>
@@ -127,7 +129,7 @@
               <i class="nav-icon bi bi-layers"></i>
               <p>
                 Giao diện
-                <i class="right fas fa-angle-left"></i>
+                <i class="right fas fa-angle-left" ></i>
               </p>
             </a>
             <ul class="nav nav-treeview">

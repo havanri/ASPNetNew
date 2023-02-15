@@ -43,14 +43,15 @@ namespace ASPWebsiteShopping.Controllers.UI
 				order.DeliveryAddress = address;
 				order.CreatedAt = DateTime.Now;
 				order.UpdatedAt = DateTime.Now;
+				order.CustomerId = 1;
 				_orderService.AddOrder(order);
-				if (User.Identity.IsAuthenticated)
+				/*if (User.Identity.IsAuthenticated)
 				{
-					/*var userName = User.Identity.Name;
-					var user = await _userManager.FindByEmailAsync(userName);*/
+					var userName = User.Identity.Name;
+					var user = await _userManager.FindByEmailAsync(userName);
 
-					/*Console.WriteLine(user);*/
-				}
+					Console.WriteLine(user);
+				}*/
                 var total = 0;
                 //cart
                 List<CartModelRequest> cartItems = inp.CartsModelRequest;

@@ -13,7 +13,7 @@ namespace ASPWebsiteShopping.Services
         }
         public IEnumerable<Order> GetAllOrders()
         {
-            return _db.Orders.Where(e => e.DeletedAt == null).Include(x=>x.OrderItems).ToList();
+            return _db.Orders.Where(e => e.DeletedAt == null).Include(x=>x.OrderItems).ThenInclude(p=>p.Product);
         }
         public Order GetOrderById(int? id)
         {

@@ -21,7 +21,7 @@ function cartLoad() {
                     total += carts[i].quan * productItem.price;
                     let newItem = document.createElement("li");
                     newItem.classList.add("header-cart-item","flex-w", "flex-t","m-b-12");
-                    newItem.innerHTML = "<div class='header-cart-item-img'><img src='/" + productItem.featureImagePath + "' alt='IMG'></div><div class='header-cart-item-txt p-t-8'><a href='#' class='header-cart-item-name m-b-18 hov-cl1 trans-04'>" + productItem.name + "</a><span class='header-cart-item-info'>" + carts[i].quan + " x " +new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(productItem.price) + "</span></div>";
+                    newItem.innerHTML = "<div class='header-cart-item-img'><img src='/" + productItem.featureImagePath + "' alt='IMG' ></div><div class='header-cart-item-txt p-t-8'><a href='#' class='header-cart-item-name m-b-18 hov-cl1 trans-04'>" + productItem.name + "</a><span class='header-cart-item-info'>" + carts[i].quan + " x " +new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(productItem.price) + "</span></div>";
                     cartStorage.appendChild(newItem);
                 }
                 console.log('quantity', quantityIconCart);
@@ -83,145 +83,24 @@ function addToCart(id) {
     panelCart.classList.add('show-header-cart');
 }
 //
-function editDataProductInCart(quantity) {
-    
-}
-//Add product from cart
-/*function addProductFromCart(id) {
-    //
+function removeOneTimes(id) {
     let carts = JSON.parse(localStorage.getItem("carts"));
-    //product first in cart
-    if (carts == null) {
-        carts = [
-            {
-                id: id,
-                quan: 1,
-            },
-        ];
-        localStorage.setItem("carts", JSON.stringify(carts));
-    } //exist cart
-    else {
-        let index = null;
-        //find product by id
-        for (let i = 0; i < carts.length; i++) {
-            if (carts[i].id == id) {
-                index = i;
-            }
-        }
-        //console.log(index);
-        //product first
-        if (index == null) {
-            let newP = {
-                id: id,
-                quan: 1,
-            };
-            carts.push(newP);
-        }
-        //exist product
-        else {
-            carts[index].id = id;
-            var quantity = (carts[index].quan += 1);
-            changeValueQuantity(quantity);
-        }
-
-        localStorage.setItem("carts", JSON.stringify(carts));
-    }
-    //pass to cookie
-    let myItem = localStorage.getItem("carts");
-    redirectCart(myItem);
     console.log(carts);
-}
-function changeValueQuantity(quantity) {
-    *//*display*//*
-    //quantity element
-    var doc = document.activeElement.parentElement;
-    //tr
-    var trParent = doc.parentElement.parentElement;
-    //console.log(doc.getAttribute("class"));
-    var notes = null;
-    var priceElement = null;
-    var totalElement = null;
-    var price = 0;
-    var total = 0;
-    for (var i = 0; i < doc.childNodes.length; i++) {
-        if (doc.childNodes[i].className == "cart_quantity_input") {
-            notes = doc.childNodes[i];
-            break;
-        }
-    }
-    for (var i = 0; i < trParent.childNodes.length; i++) {
-        //get price product
-        if (trParent.childNodes[i].className == "cart_price") {
-            priceElement = trParent.childNodes[i];
-            console.log("priceElement" + priceElement.nodeName);
-            //price
-            priceT = priceElement.firstChild.textContent.split(" ")[0];
-            price = priceT.replace(',', '');
-            //var convert = priceT.replace(',', '');
-            // console.log('convert'+convert);
-            //console.log(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(convert));
-            //console.log("price" + price);
-        }
-        if (trParent.childNodes[i].className == "cart_total") {
-            totalElement = trParent.childNodes[i];
-            total = price * quantity;
-            var text = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(total);
-            //console.log("total"+totalElement.firstChild.innerHTML);
-            totalElement.firstChild.innerHTML = text.split('.').join(',');
-            //console.log(new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(total));
-            //totalElement.replaceChild(newE,totalElement.firstChild);
-            break;
-        }
-    }
-    console.log("quantity" + quantity);
-    notes.value = quantity; //get value input quantity
-    subTotal();
-}
-function setCookieProductChooseDelete(id) {
-    localStorage.setItem("idPCD", id);
-}
-//Remove product from cart
-function removeProductFromCart(id) {
-    let btnMinusProduct = document.querySelector(".cart_quantity_down");
-    console.log(btnMinusProduct.nodeName);
-    let carts = JSON.parse(localStorage.getItem("carts"));
     for (let i = 0; i < carts.length; i++) {
-        if (carts[i].id == id && carts[i].quan > 1) {
-            var quantity = (carts[i].quan -= 1);
-            changeValueQuantity(quantity);
+        var index;
+        if (carts[i].id == id) {        
+            index = i;
         }
     }
+    carts.splice(index, 1);
     localStorage.setItem("carts", JSON.stringify(carts));
     //pass to cookie
     let myItem = localStorage.getItem("carts");
     redirectCart(myItem);
+    //reload
+    cartLoad();
+    checkoutLoad();
 }
-function deleteProductInCart() {
-    var inputProductsInCart = document.querySelectorAll(".cart_product_id");
-    var idChoose = localStorage.getItem("idPCD");
-    for (var i = 0; i < inputProductsInCart.length; i++) {
-        if (inputProductsInCart[i].value == idChoose) {
-            // console.log(inputProductsInCart[i].value);
-            inputProductsInCart[i].parentElement.remove();
-            var index = -1;
-            var carts = JSON.parse(localStorage.getItem("carts"));
-            for (var i = 0; i < carts.length; i++) {
-                if (carts[i].id == idChoose) {
-                    index = i;
-                }
-            }
-            if (index != -1) {
-                carts.splice(index, 1);
-                localStorage.setItem("carts", JSON.stringify(carts));
-                //pass to cookie
-                let myItem = localStorage.getItem("carts");
-                redirectCart(myItem);
-            }
-            subTotal();
-            break;
-        }
-    }
-}*/
 function subTotal() {
     var subTotal = 0;
     var listProductInCart = document.getElementsByClassName("single-product-cart");

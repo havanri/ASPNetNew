@@ -13,7 +13,7 @@ namespace ASPWebsiteShopping.Models
 		public decimal Total { get; set; }
 		public int? CustomerId { get; set; }
         [ForeignKey("CustomerId")]
-        public Customer Customer { get; set; }
+        public virtual Customer Customer { get; set; }
 
         public ICollection<Product> Products { get; set; }
         public List<OrderItem> OrderItems { get; set; }

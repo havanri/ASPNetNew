@@ -1,0 +1,79 @@
+﻿@{
+	Layout = "/Views/Layouts/_ManagerTable.cshtml";
+	ViewData["Title"] = "Order Page";
+	ViewData["Page"] = "Danh mục sản phẩm";
+}
+@model OrderViewModel
+<section class="content">
+	  <div class="container-fluid">
+		<div class="row">
+		  <div class="col-12">
+			<!--Card-->
+			<div class="card">
+				<div class="card-header">
+					
+				</div>
+					@*             <div class="card-header">
+                <h3 class="card-title">DataTable with default features</h3>
+              </div>*@
+			  <!-- /.card-header -->
+			  <div class="card-body">
+				<table id="example1" class="table table-bordered table-striped">
+				  <thead>
+				  <tr>
+					<th>#</th>
+					<th>Status</th>
+					<th>Payment Method</th>
+					<th>Total</th>
+					<th style="width: 20%">
+					  </th>
+				  </tr>
+				  </thead>
+				  <tbody>
+								@foreach (var obj in @Model.Orders)
+								{
+							<tr>
+								<td>
+													#@obj.Id
+								</td>
+								<td>
+											@obj.Status
+								</td>
+								<td>
+											@obj.PaymentMethod
+								</td>
+									<td>
+											@obj.Total
+									</td>
+									<td class="project-actions text-right">
+									<div class="w-75 btn-group" role="group">
+											<a asp-controller="Order" asp-action="Show" asp-route-id="@obj.Id" class="btn btn-info btn-sm" >
+											  <i class="bi bi-eye"></i>
+									  </a>
+									</div>
+								</td>
+							</tr>
+								}
+				  </tbody>
+				  <tfoot>
+				  <tr>
+					<th>#</th>
+					<th>Status</th>
+					<th>Payment Method</th>
+					<th>Total</th>
+					<th style="width: 20%">
+					  </th>
+				  </tr>
+				  </tfoot>
+				</table>
+			  </div>
+			  <!-- /.card-body -->
+			</div>
+			<!-- /.card -->
+		  </div>
+		  <!-- /.col -->
+		</div>
+		<!-- /.row -->
+	  </div>
+	  <!-- /.container-fluid -->
+	</section>
