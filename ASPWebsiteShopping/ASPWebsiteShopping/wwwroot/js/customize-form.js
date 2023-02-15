@@ -37,3 +37,9 @@
     });
     //
 });
+var money = document.querySelectorAll(".js-money-format");
+for (var i = 0; i <= money.length; i++) {
+    var price = money[i].textContent;
+    console.log(price);
+    money[i].innerHTML = new Intl.NumberFormat('vi-VN', { style: 'currency', currency: 'VND' }).format(parseInt(price));
+}

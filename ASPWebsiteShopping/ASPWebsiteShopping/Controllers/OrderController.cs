@@ -41,7 +41,7 @@ namespace ASPWebsiteShopping.Controllers
                 productOfOrder.Add(product);
             }
             model.Products = productOfOrder;
-            return View(model);
+            return View("Views/Admin/Order/OrderDetail.cshtml", model);
             }
            
            

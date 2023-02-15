@@ -72,7 +72,7 @@ function updateInformationSpeciesOfAttribute(e) {
                     let itemReplace = document.querySelector(".attribute-species");
                     let newItem = document.createElement("div");
                     newItem.classList.add("species");
-                    newItem.innerHTML = '<label>Tên:' + nameSelected + '</label><br/><label> Giá trị(s):</label ><div class="select2-purple" ><select name="attribute_values[]" class="js-species-select" multiple="multiple" data-placeholder="Chọn tên chủng loại" data-dropdown-css-class="select2-purple" style="width: 100%;">' + data + '</select></div> ';
+                    newItem.innerHTML = '<label>Tên:' + nameSelected + '</label><br/><label> Giá trị(s):</label ><div class="select2-purple" ><select name="attribute_values[]" class="js-example-basic-single" multiple="multiple" data-placeholder="Chọn tên chủng loại" data-dropdown-css-class="select2-purple" style="width: 100%;">' + data + '</select></div> ';
                     itemReplace.appendChild(newItem);
 
 
