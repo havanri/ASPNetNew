@@ -35,5 +35,14 @@ namespace ASPWebsiteShopping.Controllers.UI
         {
             return _productService.onlyAllProduct().ToList();
         }
-	}
+        [Route("search")]
+        public IActionResult search(string? key)
+        {
+            var model = new HomeViewModel();
+            model.Categories = _categoryService.GetAllCategories().ToList();
+            model.Sliders = _sliderService.GetList();
+            model.Products = _productService.GetProductsBySearch(key).ToList();
+            return View("Views/UI/Home/Index.cshtml", model);
+        }
+    }
 }

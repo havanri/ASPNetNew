@@ -118,6 +118,7 @@
     overflow-y: scroll;
 }
 .tick {
+    color: #666666;
     display: block;
     position: relative;
     padding-left: 23px;
@@ -165,6 +166,7 @@
 }
 
 .tick .check:after {
+    
     left: 6px;
     top: 2px;
     width: 5px;

@@ -55,32 +55,6 @@
 						</div>
 					</div>
 				</div>
-			@*@foreach (var slider in Model.Sliders)
-			{
-						<div class="item-slick1" style="background-image: url(../@slider.ImagePath);">
-						<div class="container h-full">
-							<div class="flex-col-l-m h-full p-t-100 p-b-30 respon5">
-								<div class="layer-slick1 animated visible-false" data-appear="rotateInDownLeft" data-delay="0">
-									<span class="ltext-101 cl2 respon2">
-										@slider.Description
-									</span>
-								</div>
-
-								<div class="layer-slick1 animated visible-false" data-appear="rotateInUpRight" data-delay="800">
-									<h2 class="ltext-201 cl2 p-t-19 p-b-43 respon1">
-										ƯU ĐÃI GIẢM GIÁ CỰC SỐC !!!
-									</h2>
-								</div>
-
-								<div class="layer-slick1 animated visible-false" data-appear="rotateIn" data-delay="1600">
-									<a href="product.html" class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04">
-										Mua Ngay
-									</a>
-								</div>
-							</div>
-						</div>
-					</div>
-			}*@
 			
 			</div>
 		</div>
@@ -189,17 +163,13 @@
 				
 
 				<div class="flex-w flex-c-m m-tb-10">
-					@*<div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
-						<i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
-						<i class="icon-close-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
-						 Filter
-					</div>*@
 
-					<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
+						<div class="flex-c-m stext-106 cl6 size-105 bor4 pointer hov-btn3 trans-04 m-tb-4 js-show-search">
 						<i class="icon-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-search"></i>
 						<i class="icon-close-search cl2 m-r-6 fs-15 trans-04 zmdi zmdi-close dis-none"></i>
 						Search
 					</div>
+					
 				</div>
 				
 				<!-- Search product -->
@@ -209,7 +179,7 @@
 							<i class="zmdi zmdi-search"></i>
 						</button>
 
-						<input class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search-product" placeholder="Search">
+						<input class="mtext-107 cl2 size-114 plh2 p-r-15 js-search" type="text" name="search-product" placeholder="Search" >
 					</div>	
 				</div>
 
@@ -429,7 +399,7 @@
                             class="btn btn-success form-check-label active"> <input class="form-check-input"
                                 type="radio" checked> Apply </label> </div>
 				</div>
-				<div> <label class="tick">New <input type="checkbox" checked="checked"> <span class="check"></span>
+				<div> <label class="tick">Mới nhất<input type="checkbox" checked="checked"> <span class="check"></span>
 					</label> </div>
 				<div> <label class="tick">Sale <input type="checkbox"> <span class="check"></span> </label> </div>
 			</div>
@@ -442,45 +412,28 @@
 							@foreach (var ct in Model.Categories)
 							{
 										<div class="my-1"> <a class="tick" asp-controller="cat" asp-action=@ct.Slug>@ct.Name</a> </div>
-								@*<li><a asp-controller="cat" asp-action=@ct.Slug>@ct.Name</a></li>*@
 							}
-					@*<div class="my-1"> <label class="tick">Windbreaker <input type="checkbox" checked="checked"> <span
-                                class="check"></span> </label> </div>
-					<div class="my-1"> <label class="tick">Jumpsuit <input type="checkbox"> <span class="check"></span>
-						</label> </div>
-					<div class="my-1"> <label class="tick">Jacket <input type="checkbox"> <span class="check"></span>
-						</label> </div>
-					<div class="my-1"> <label class="tick">Coat <input type="checkbox"> <span class="check"></span>
-						</label> </div>
-					<div class="my-1"> <label class="tick">Raincoat <input type="checkbox"> <span class="check"></span>
-						</label> </div>
-					<div class="my-1"> <label class="tick">Handbag <input type="checkbox" checked> <span
-                                class="check"></span> </label> </div>
-					<div class="my-1"> <label class="tick">Warm vest <input type="checkbox"> <span class="check"></span>
-						</label> </div>
-					<div class="my-1"> <label class="tick">Wallets <input type="checkbox" checked> <span
-                                class="check"></span> </label> </div>*@
 				</div>
 			</div>
 			<div class="box border-bottom">
-				<div class="box-label text-uppercase d-flex align-items-center">season <button class="btn ml-auto"
+				<div class="box-label text-uppercase d-flex align-items-center">Vật liệu<button class="btn ml-auto"
                         type="button" data-toggle="collapse" data-target="#inner-box2" aria-expanded="false"
                         aria-controls="inner-box2"><span class="fas fa-plus"></span></button> </div>
 				<div id="inner-box2" class="collapse mt-2 mr-1">
-					<div class="my-1"> <label class="tick">Spring <input type="checkbox" checked="checked"> <span
+					<div class="my-1"> <label class="tick">Da bò<input type="checkbox" checked="checked"> <span
                                 class="check"></span> </label> </div>
-					<div class="my-1"> <label class="tick">Summer <input type="checkbox"> <span class="check"></span>
+					<div class="my-1"> <label class="tick">Flannelette<input type="checkbox"> <span class="check"></span>
 						</label> </div>
-					<div class="my-1"> <label class="tick">Autumn <input type="checkbox" checked> <span
+					<div class="my-1"> <label class="tick">Da PVC<input type="checkbox" checked> <span
                                 class="check"></span> </label> </div>
-					<div class="my-1"> <label class="tick">Winter <input type="checkbox"> <span class="check"></span>
+					<div class="my-1"> <label class="tick">Vải tổng hợp<input type="checkbox"> <span class="check"></span>
 						</label> </div>
-					<div class="my-1"> <label class="tick">Rainy <input type="checkbox"> <span class="check"></span>
+					<div class="my-1"> <label class="tick">Vải lưới<input type="checkbox"> <span class="check"></span>
 						</label> </div>
 				</div>
 			</div>
 			<div class="box border-bottom">
-				<div class="box-label text-uppercase d-flex align-items-center">price <button class="btn ml-auto"
+				<div class="box-label text-uppercase d-flex align-items-center">Khoảng giá<button class="btn ml-auto"
                         type="button" data-toggle="collapse" data-target="#price" aria-expanded="false"
                         aria-controls="price"><span class="fas fa-plus"></span></button> </div>
 				<div class="collapse" id="price">
@@ -502,7 +455,7 @@
 				</div>
 			</div>
 			<div class="box">
-				<div class="box-label text-uppercase d-flex align-items-center">size <button class="btn ml-auto"
+				<div class="box-label text-uppercase d-flex align-items-center">Kích thước<button class="btn ml-auto"
                         type="button" data-toggle="collapse" data-target="#size" aria-expanded="false"
                         aria-controls="size"><span class="fas fa-plus"></span></button> </div>
 				<div id="size" class="collapse">
@@ -525,7 +478,7 @@
 
 			<!--/End Category-->
 				<div class="col-9">
-			<div class="row isotope-grid">
+			<div class="row isotope-grid js-all-product">
 			@foreach (var pr in Model.Products)
 			{
 				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
@@ -558,6 +511,7 @@
 								</a>
 							</div>
 						</div>
+						<!--/Block-->
 					</div>
 				
 			
@@ -573,5 +527,5 @@
 		</div>
 	</section>
 @section js{
-	
+	<script src="~/js/search.js"></script>
 }

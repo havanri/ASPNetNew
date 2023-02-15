@@ -11,6 +11,7 @@ namespace ASPWebsiteShopping.Services
         Product GetProductBySlug(string? slug);
         void UpdateProduct(Product product);
         IEnumerable<Product> onlyAllProduct();
+        IEnumerable<Product> GetProductsBySearch(string key_word);
 
     }
 }

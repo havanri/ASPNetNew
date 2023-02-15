@@ -28,5 +28,5 @@ namespace ASPWebsiteShopping.Controllers.UI
             model.Products = model.Category.Products;
             return View("Views/UI/Products/Index.cshtml",model);
 		}
-	}
+    }
 }

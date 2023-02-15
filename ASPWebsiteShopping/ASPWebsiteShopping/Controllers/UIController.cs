@@ -19,14 +19,6 @@ namespace ASPWebsiteShopping.Controllers
           
 
         }
-        public IActionResult Contact()
-        {
-            return View("Views/UI/Contact/Index.cshtml");
-        }
-        public IActionResult About()
-        {
-            return View("Views/UI/About/Index.cshtml");
-        }
         public IActionResult Index()
         {
             var model = new UIHomeViewsModel();

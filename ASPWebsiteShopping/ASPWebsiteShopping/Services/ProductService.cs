@@ -54,5 +54,20 @@ namespace ASPWebsiteShopping.Services
         {
             return _db.Products;
         }
+
+        public IEnumerable<Product> GetProductsBySearch(string? key_word)
+        {
+            var products = new List<Product>();
+            //get all
+            products = _db.Products.ToList();
+            //search
+            if (!String.IsNullOrEmpty(key_word))
+            {
+                products = products.Where(s => s.Name!.Contains(key_word)).ToList();
+            }
+
+            return products;
+            
+        }
     }
 }
