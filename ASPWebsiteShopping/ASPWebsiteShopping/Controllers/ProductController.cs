@@ -5,13 +5,6 @@ using ASPWebsiteShopping.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Hosting;
-using System;
-using System.Linq;
-using System.Linq.Expressions;
-using System.Net;
-using System.Runtime.InteropServices;
-using System.Web.WebPages;
 
 
 namespace ASPWebsiteShopping.Controllers
@@ -205,10 +198,6 @@ namespace ASPWebsiteShopping.Controllers
         [HttpPost]
         public IActionResult Edit(ProductViewModel model, List<string> tags, string[] attribute_values)
         {
-
-
-            /*Console.WriteLine("tags" + tags.Count());
-            Console.WriteLine("images" + model.ProductImagesRequest.Count());*/
             try
             {
                 var product = _productService.GetProductById(model.Product.Id);

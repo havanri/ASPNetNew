@@ -96,7 +96,7 @@ app.UseAuthorization();
 //route
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=UI}/{action=Index}/{id?}");
+    pattern: "{controller=Test}/{action=Index}/{id?}");
 
 //
 app.MapRazorPages();

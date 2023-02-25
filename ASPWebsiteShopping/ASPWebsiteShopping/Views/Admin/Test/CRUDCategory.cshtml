@@ -1,0 +1,48 @@
+﻿@{
+	Layout = "/Views/Layouts/_ManagerTable.cshtml";
+	ViewData["Title"] = "Category";
+}
+@section Css{
+	<link href="~/css/customize.css" rel="stylesheet"/>
+}
+<section class="content d-block">
+	<form class="search-form float-right">
+		<input type="search" class="input-search btn btn-outline-secondary"/>
+		<input type="submit" class="btn btn-outline-primary" value="Tìm kiếm danh mục"/>
+	</form>
+	<div class="col-container">
+		<div class="col-wrap">
+			<div class="col-left">
+				<p>
+						Danh mục sản phẩm cho cửa hàng của bạn được quản lý ở đây. Để thay đổi thứ tự danh mục hiển thị trên trang web, bạn có thể kéo thả chúng để sắp xếp. Để xem chi tiết các danh mục, nhấp vào liên kết "Tùy chọn màn hình" ở trên cùng của trang.
+				</p>
+				<div class="form-wrap">
+					<h2>Thêm mới</h2>
+					<form id="addCategory">
+						<div class="form-group">
+							<label class="d-block">Tên</label>
+							<input type="text" name="name" class="btn btn-outline-secondary"/>
+						</div>
+							<div class="form-group">
+									<label class="d-block">Đường dẫn</label>
+									<input type="text" name="slug" class="btn btn-outline-secondary"/>
+								</div>	
+								<label class="d-block">Danh mục cha</label>
+									<select class="js-example-basic-single btn btn-outline-secondary" >
+							<option value="-1">--None--</option>
+								<option value="1">1</option>
+						</select>
+							<div class="form-group">
+								<label class="d-block">Mô tả</label>
+								<textarea name="description" rows="5" cols="40"></textarea>
+							</div>
+							<button class="btn btn-primary">Thêm danh mục mới</button>
+					</form>
+				</div>
+			</div>
+			<div class="col-right">
+
+			</div>
+		</div>
+	</div>
+</section>

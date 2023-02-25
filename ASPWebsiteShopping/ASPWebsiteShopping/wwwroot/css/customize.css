@@ -1,0 +1,17 @@
+﻿.search-form{
+    float:right;
+    font-size:13px;
+    display:block;
+    width:100%;
+}
+.input-search{
+    margin:0 4px 0 0;
+    padding:5px 8px;
+}
+.col-container{
+    width:100%;
+}
+.col-left {
+    float: left;
+    width: 35%;
+}
